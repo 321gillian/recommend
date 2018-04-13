@@ -3,7 +3,9 @@
 var express = require("express");
 var app = express();
 var path = require("path");
+var bodyParser = require('body-parser')
 app.use(express.static(__dirname + '/views'));
+app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
   res.send("Hello World"); // we set the response to send back the string hello world
@@ -11,11 +13,9 @@ app.get('/', function(req, res) {
 });
 
 //route to accepting first and last name.
-app.get('/abc', function(req, res) {
-  // accept data - first name
-  // accept data - SECOND name
-  let firstname_variable = req.query.firstname;
-  let lastname_variable = req.query.lastname;
+app.post('/abc', function(req, res) {
+  let firstname_variable = req.body.firstname;
+  let lastname_variable = req.body.lastname;
   res.send("Hello World yo! " + firstname_variable + " "+ lastname_variable); // we set the response to send back the string hello world
   console.log("Hello World"); // used to output activity in the console
 });

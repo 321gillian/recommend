@@ -23,3 +23,15 @@ function renderHTML(data){
 	animalContainer.insertAdjacentHTML('beforeend', 'no');
 
 }
+
+
+var submit = document.getElementById("submit");
+submit.addEventListener("click", function(){
+	var firstNameContainer = document.getElementById("fname");
+	var lastNameContainer = document.getElementById("lname");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "/abc");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+	xmlhttp.send(JSON.stringify({firstname:firstNameContainer.value, lastname:lastNameContainer.value}));
+	console.log(lastNameContainer.value);
+});
