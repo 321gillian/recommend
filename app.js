@@ -13,37 +13,24 @@ app.get('/', function(req, res) {
 });
 
 //route to accepting first and last name.
-app.post('/abc', function(req, res) {
+app.post('/login', function(req, res) {
   let firstname_variable = req.body.firstname;
   let lastname_variable = req.body.lastname;
-  res.send("Hello World yo! " + firstname_variable + " "+ lastname_variable); // we set the response to send back the string hello world
-  console.log("Hello World"); // used to output activity in the console
+  res.send("insert name here! " + firstname_variable + " "+ lastname_variable); //here we instruct the api to retrive both first name and last name
+  console.log("name"); 
 });
 
 //route to render the index.html page with express
 app.get('/index', function(req, res) {
-  res.sendFile(path.join(__dirname+'/views/index.html')); // we set the response to send back the string hello world
+  res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
-// //route to accepting an email address.
-// app.get('/abc', function(req, res) {
-//   // accept data - first name
-//   // accept data - SECOND name
-//   let firstname_variable = req.query.firstname;
-//   let lastname_variable = req.query.lastname;
-//   res.send("Hello World yo! " + firstname_variable + " "+ lastname_variable); // we set the response to send back the string hello world
-//   console.log("Hello World"); // used to output activity in the console
-// });
-
-// //route to accepting an email password.
-// app.get('/abc', function(req, res) {
-//   // accept data - first name
-//   // accept data - SECOND name
-//   let firstname_variable = req.query.firstname;
-//   let lastname_variable = req.query.lastname;
-//   res.send("Hello World yo! " + firstname_variable + " "+ lastname_variable); // we set the response to send back the string hello world
-//   console.log("Hello World"); // used to output activity in the console
-// });
+//route to accepting an email address.
+app.get('/login', function(req, res) {
+  let email_variable = req.query.email;
+  res.send("insert email here " + email_variable); 
+  console.log("email ready!"); 
+});
 
 
 
