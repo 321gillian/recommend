@@ -7,10 +7,7 @@ var bodyParser = require('body-parser')
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.json())
 
-app.get('/', function(req, res) {
-  res.send("Hello World"); // we set the response to send back the string hello world
-  console.log("Hello World"); // used to output activity in the console
-});
+var songs = require("./model/songs.json"); // allow the app to access the products.json file
 
 //route to accepting first and last name.
 app.post('/login', function(req, res) {
@@ -20,10 +17,15 @@ app.post('/login', function(req, res) {
   console.log("name"); 
 });
 
-//route to render the index.html page with express
-app.get('/index', function(req, res) {
-  res.sendFile(path.join(__dirname+'/views/index.html'));
-});
+app.get('/' , function(req, res){
+  res.render("index.jade", 
+             {songs:songs} // Inside the {} option we call the products variable from line 10 above 
+            ); 
+  console.log("Index page is up!");
+  
+  
+})
+
 
 //route to accepting an email address.
 app.get('/login', function(req, res) {
@@ -33,11 +35,7 @@ app.get('/login', function(req, res) {
 });
 
 
-
-
-
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
 console.log("Yippee its running");
 
 });
-

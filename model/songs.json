@@ -1,0 +1,26 @@
+[
+    {
+       "title" : "Jingle Bells",
+        "artist"  : "Santa Claus",
+        "lyrics" : "Jingle bells, jingle bells, jingle all the way",
+        "year" : "1900",
+        "album" : "White Christmas",
+        "cover" : "images/sample.jpg"
+    },
+    {
+       "title" : "Winter Wonderland",
+        "artist"  : "Santa Claus",
+        "lyrics" : "Sleigh bells ring, are you listening",
+        "year" : "1900",
+        "album" : "White Christmas",
+        "cover" : "images/sample.jpg"   
+    },
+ {
+       "title" : "Rudolph the Red-Nosed Reindeer",
+        "artist"  : "Mrs Claus",
+        "lyrics" : "Rudolph the red-nosed reindeer, had a very shiney nose",
+        "year" : "1900",
+        "album" : "White Christmas",
+        "cover" : "images/sample.jpg"   
+    }
+]
