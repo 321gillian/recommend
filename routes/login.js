@@ -13,4 +13,9 @@ router.post('/login', function(req, res) {
   res.send("insert name here! " + firstname_variable + " "+ lastname_variable); //here we instruct the api to retrive both first name and last name
 });
 
+//login post
+router.post('/login', (req, res) => {
+  console.log('new login!')
+});
+
 module.exports = router;

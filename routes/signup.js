@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var path = require("path");
+
+
 //route to render the signup.jade page
 router.get('/', function(req, res) {
   res.render("signup.jade"); 
@@ -12,5 +14,11 @@ router.post('/signup', function(req, res) {
   let lastname_variable = req.body.lastname;
   res.send("insert name here! " + firstname_variable + " "+ lastname_variable); //here we instruct the api to retrive both first name and last name
 });
+
+//new sign up
+var user = function (firstname, lastname, email){
+  
+  
+}
 
 module.exports = router;

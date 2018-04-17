@@ -6,21 +6,23 @@ html
   title Mystery Music App
   body
     header
-      h1 Sign Up 
-
-      form(action='/signup', method='POST')
-      p First Name
-      div
-        input#fname(type='text')
-        br
-        input#lname(type='text')
-        br
-        input#submit(type='submit', value='submit')
-      div
-        inputput#email(type='text')
-          br
+    h1 Mystery Music App
+      p Sign Up
+       
+        form(method="post")
+          #fieldset
+          label(for="firstname") First Name:
+          input(name="name", type="text", placeholder=" Enter your first name")
+          label(for="lastname") Last Name:
+          input(name="name", type="text", placeholder="Enter your last name")
+          label(for="email") Email:
+          input(email="email", type="text", placeholder="Enter your email")
+          button.button(type="submit") create new account
+          
+          
+      
    
-    div 
+    
 
  script(src='./media/main.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')
