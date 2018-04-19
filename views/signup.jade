@@ -9,20 +9,22 @@ html
     h1 Mystery Music App
       p Sign Up
        
-        form(method="post")
-          #fieldset
+       
+        
           label(for="firstname") First Name:
-          input(name="name", type="text", placeholder=" Enter your first name")
+          input(id= "firstname",name="name", type="text", placeholder=" Enter your first name")
           label(for="lastname") Last Name:
-          input(name="name", type="text", placeholder="Enter your last name")
+          input(id="lastname", name="name", type="text", placeholder="Enter your last name")
           label(for="email") Email:
-          input(email="email", type="text", placeholder="Enter your email")
-          button.button(type="submit") create new account
+          input(id="email", email="email", type="text", placeholder="Enter your email")
+          label(for="password") Password:
+          input(id="password", password="password", type="string", placeholder="Enter your password")
+          button.button(id= "submit",type="submit") create new account
           
           
       
    
-    
+  
 
- script(src='./media/main.js')
+ script(src='./media/signup_client.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')

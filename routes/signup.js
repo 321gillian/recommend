@@ -1,24 +1,38 @@
+//server side for signup
 var express = require('express');
 var router = express.Router();
 var path = require("path");
 
+var bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+var User = require('../model/user');
 
 //route to render the signup.jade page
 router.get('/', function(req, res) {
   res.render("signup.jade"); 
 });
 
-//route to accepting first and last name when the user signs up
-router.post('/signup', function(req, res) {
-  let firstname_variable = req.body.firstname;
-  let lastname_variable = req.body.lastname;
-  res.send("insert name here! " + firstname_variable + " "+ lastname_variable); //here we instruct the api to retrive both first name and last name
+// CREATES A NEW USER
+router.post('/', function (req, res) {
+    User.create({
+            name : req.body.name,
+            email : req.body.email,
+            password : req.body.password
+        }, 
+        function (err, user) {
+            if (err) return res.status(500).send("There was a problem adding the information to the database.");
+            res.status(200).send(user);
+        });
 });
 
-//new sign up
-var user = function (firstname, lastname, email){
-  
-  
-}
+// RETURNS ALL THE USERS IN THE DATABASE
+router.get('/users', function (req, res) {
+    User.find({}, function (err, users) {
+        if (err) return res.status(500).send("There was a problem finding the users.");
+        res.status(200).send(users);
+    });
+});
+
 
 module.exports = router;

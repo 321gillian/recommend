@@ -10,9 +10,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", " jade");
 
+app.use(express.static("views"));
+app.use(express.static("routes"));
+
+var mongoose = require ('mongoose');
+mongoose.connect('mongodb://mysterymusicapp:mysterymusicapp@ds249079.mlab.com:49079/mysterymusicapp')
 
 var songs = require("./model/songs.json"); // allow the app to access the products.json file
-var user = require("./model/user.json"); //allows the app to access the user
 
 app.get('/' , function(req, res){
   res.render("index.jade", 
@@ -22,30 +26,14 @@ app.get('/' , function(req, res){
   
 })
 
-//function to create new user account
-app.post('/signup', function(req,res){
-  var count = Object.keys(firstname).length //tells us how many users we have
-  console.log(count);
-  //this will look for the largest id
-  function getMax(firstname, id){
-    var max
-    for (var i=0; i<firstname.length; i++){
-      if(!max || parseInt(firstname[i][id]) > parseInt(max[id]))
-         max = firstname[i];
-    }
-    return max
-  }
-    var maxPpg = getMax(firstname, "id");  
-    newId = maxPpg + 1;
-    console.log(newId);
-})
-
 
 
 // function for login route
 var login = require('./routes/login');
 app.use('/login', login);
+
 //function for signup route
+//function to create new user account with signup
 var signup = require('./routes/signup');
 app.use('/signup', signup);
 
