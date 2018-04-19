@@ -32,10 +32,6 @@ app.get('/login', function(req, res) {
   console.log("email ready!"); 
 });
 
-
-
-
-
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
 console.log("Yippee its running");
 
