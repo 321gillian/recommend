@@ -4,11 +4,20 @@ const express = require("express");
 const app = express();
 var path = require("path");
 const bodyParser = require('body-parser')
+var session = require('client-sessions');
 
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
+
+//session handler middleware
+app.use(session({
+  cookieName: 'session',
+  secret: 'random_string_goes_here',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
 
 app.set("view engine", " jade");
 
@@ -68,16 +77,39 @@ app.post('/login', function(req, res){
     if (err) return handleError(err);
     if (!user) {
       if (req.body.password === user.password) {
-        res.status(200).send("!logged in, success ");
+        //sets a cookie with user info
+       req.session.user = user;
+        res.redirect('/dashboard');
+      } else {
+        res.render('login.jade', { error: 'Invalid email or password.' });
       }
-    }else {
-      res.status(200).send("!invalid login");
     }
-    
-    console.log('YOYOY %s %s %s.', user.firstname, user.email,
-    user.password);
   });
 });
+
+//getting the users data from the session
+// app.get('/dashboard', function(req, res) {
+//   if (req.session && req.session.user) { // Check if session exists
+//     // lookup the user in the DB by pulling their email from the session
+//     User.findOne({ email: req.session.user.email }, function (err, user) {
+//       if (!user) {
+//         // if the user isn't found in the DB, reset the session info and
+//         // redirect the user to the login page
+//         req.session.reset();
+//         res.redirect('/login');
+//       } else {
+//         // expose the user to the template
+//         res.locals.user = user;
+ 
+//         // render the dashboard page
+//         res.render('dashboard.jade');
+//       }
+//     });
+//   } else {
+//     res.redirect('/login');
+//   }
+// });
+
 
 
 
