@@ -9,12 +9,12 @@ router.get('/', function(req, res) {
 
 //route to accepting first and last name when the user logs in.
 router.post('/login', function(req, res) {
-  let firstname_variable = req.body.firstname;
-  let lastname_variable = req.body.lastname;
-  res.send("insert name here! " + firstname_variable + " "+ lastname_variable); //here we instruct the api to retrive both first name and last name
+  let username_variable = req.body.username;
+  let password_variable = req.body.password;
+  res.send(" " + username_variable + " "+ password_variable); //here we instruct the api to retrive both first name and last name
 });
 
-//login post
+//login 
 router.post('/login', (req, res) => {
   console.log('new login!')
 });

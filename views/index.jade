@@ -1,22 +1,30 @@
 doctype html
-html
+html(lang='en')
   head
-  link(rel='stylesheet', href='stylesheets/styles.css', type='text/css')
-  meta(name='viewport', content='width=device-width, initial-scale=1')
-  title Mystery Music App
+    meta(charset='utf-8')
+    meta(name='description', content='')
+    title Mystery Music App
+    link(rel='stylesheet', type='text/css', href='/css/reset.css')
+    link(rel='stylesheet', type='text/css', href='/css/structure.css')
+    link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css')
+    script(type='text/javascript', src='/js/jquery.js')
+    script(type='text/javascript', src='/js/menu.js')
+    script(src='//code.jquery.com/jquery-1.10.2.js')
+    script(src='//code.jquery.com/ui/1.10.4/jquery-ui.js')
   body
-    header
+   header
       h1 Mystery Music App
       p Login
-      div
-        input#fname(type='text')
+      
+        label(for="username") User Name:
+        input(id="username",type='text')
         br
-        input#lname(type='text')
+        label(for="password") Password:
+        input(id="password",type='text')
         br
-        input#submit(type='submit', value='submit')
-      div
-        inputput#email(type='text')
-          br
-   
-    script(src='./media/main.js')
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')
+        button.button(id= "submit",type="submit") Login
+      
+       
+         
+   script(src='./media/main.js')
+   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')
