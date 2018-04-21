@@ -8,18 +8,23 @@ html
  
    header
       h1 Mystery Music App
-      p Login
-      h2 #{error}
-      
-        label(for="email") User Name:
-        input(id="email",type='text')
+      p Profile Page
+     
+       
+        
+        br
+        label(for="firstname") First Name:
+        input(id="firstname",type='text')
+        br
+        label(for="lastname") Last Name:
+        input(id="lastname",type='text')
         br
         label(for="password") Password:
         input(id="password",type='password')
-        br
-        button.button(id= "submit_login",type="submit") Login
+        
+        button.button(id= "update profile",type="submit") Update Profile
       
        
          
-   script(src='./media/login_client.js')
+   script(src='./media/profile_update.js')
    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')

@@ -1,18 +1,16 @@
 //clientside js page
 
-var submit = document.getElementById("submit");
+var submit = document.getElementById("update profile");
 submit.addEventListener("click", function(){
 	var firstNameContainer = document.getElementById("firstname");
 	var lastNameContainer = document.getElementById("lastname");
-  var emailContainer = document.getElementById("email");
   var passwordContainer = document.getElementById("password");
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "/signup");
+	xmlhttp.open("POST", "/profile/update");
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 	xmlhttp.send(JSON.stringify({
     firstname:firstNameContainer.value,
     lastname:lastNameContainer.value, 
-    email:emailContainer.value, 
     password:passwordContainer.value
   }));
 });
