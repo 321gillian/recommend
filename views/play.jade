@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+  link(rel='stylesheet', href='stylesheets/styles.css', type='text/css')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  title Mystery Music App
+  body
+    header
+      h1 Mystery Music App
+      p Login
+      div
+        each song in detail
+          h1 #{song.title}
+          p #{song.lyrics}      
+          a.button(href='show/#{song.id}') More info
+          a.button(href='#') Next
+      include partials/footer
