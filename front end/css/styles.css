@@ -38,8 +38,7 @@ body {
 canvas {
     margin-right: auto;
     margin-left: auto;
-    height: 80vh!important;
-    width: 70%!important;
+    /* width: 70%!important; */
     /* background-color: #ff6633;get rid of this line once the canvas is implemented */
 }
 
