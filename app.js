@@ -81,7 +81,6 @@ app.get('/login', function(req, res) {
   }
 });
 
-<<<<<<< HEAD
 //writes the login request
 app.post('/login', function(req, res){
   if (req.body.password && req.body.email){
@@ -161,10 +160,6 @@ app.get('/logout', function(req, res) {
   req.session.reset();
   res.redirect('/login');
 });
-=======
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
-console.log("Yippee its running");
->>>>>>> master
 
 //route to render the profile update page
 app.get('/profile_update', function(req, res) {
