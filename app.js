@@ -24,24 +24,24 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-var currentNumber = randomNumber(1, 12);
+
+
 
 app.get('/' , function(req, res){
-  //function to get random songfunction to
+  var currentNumber = randomNumber(1, 12);
+  //function to get random songfunction 
 function findSong(which) {
   return which.id === currentNumber;
 }
-
  //filter the songs and declare the new song as a separate variable
   detail = songs.filter(findSong);
 
   res.render("play.jade", 
-             {detail:detail} // Inside the {} option we call the products variable from line 10 above 
+             {detail:detail}// Inside the {} option we call the products variable from line 10 above
             ); 
   console.log("Index page is up!");
   
 })
-
 
 
 app.get('/show/:id', function(req, res){
