@@ -18,7 +18,12 @@ html
         input(id="password",type='text')
         br
         button.button(id= "submit",type="submit") Login
-      
+        div
+        each song in detail
+          h1 #{song.title}
+          p #{song.lyrics}      
+          a.button(href='show/#{song.id}') More info
+          a.button(href='') Next
        
          
    script(src='./media/main.js')

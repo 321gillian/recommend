@@ -33,7 +33,7 @@
          "spotifyLink" : "https://open.spotify.com/album/3VHW81P7SsBqPBGjiCJRXj",
          "googlePlayLink" : "https://play.google.com/store/music/album/David_Bowie_Young_Americans_2016_Remastered_Versio?id=B33y6j7ualgguue3faty3f4wiie",
          "audio" : "audio/fame.mp3",
-         "cover" : "images/sigrid.jpg"
+         "cover" : "images/fame.jpg"
      },
      {
         "title" : "Supermodel",
@@ -87,7 +87,7 @@
          "spotifyLink" : "https://open.spotify.com/album/0ihBM9U8RmU99Z3amECh60",
          "googlePlayLink" : "https://play.google.com/store/music/album/Dolly_Parton_Coat_Of_Many_Colors?id=Bqlv633bb4qv3fcj4okuodnm6gm&hl=en",
          "audio" : "audio/dolly.mp3",
-         "cover" : "images/anima.jpg"
+         "cover" : "images/dolly.jpg"
      },
      {
         "title" : "Should Have Known Better",
@@ -195,7 +195,7 @@
          "spotifyLink" : "https://open.spotify.com/album/2nBo5nFoszkjuY0bxv1y0A",
          "googlePlayLink" : "https://play.google.com/store/music/album/Danger_Mouse_Daniele_Luppi_Rome?id=Bzsxuex4gsyus6qjm6nzupk7zna",
          "audio" : "audio/danger.mp3",
-         "cover" : "images/rome.jpg"
+         "cover" : "images/rome.jpeg"
      },
      {
         "title" : "Show You The Way",

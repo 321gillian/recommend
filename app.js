@@ -1,5 +1,4 @@
 //serverside js
-
 const express = require("express");
 const app = express();
 var path = require("path");
@@ -10,6 +9,8 @@ app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "jade");
+
 
 //session handler middleware
 app.use(session({
@@ -19,32 +20,30 @@ app.use(session({
   activeDuration: 5 * 60 * 1000,
 }));
 
-app.set("view engine", " jade");
-
-app.use(express.static("views"));
-app.use(express.static("routes"));
 
 var mongoose = require ('mongoose');
 mongoose.connect('mongodb://mysterymusicapp:mysterymusicapp@ds249079.mlab.com:49079/mysterymusicapp')
 
-var songs = require("./model/songs.json"); // allow the app to access the products.json file 
-var user = require('./model/user');
 //random number generator function
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+var songs = require("./model/songs.json"); // allow the app to access the products.json file
+var user = require('./model/user');
+
+
 app.get('/' , function(req, res){
   var currentNumber = randomNumber(1, 12);
-  //function to get random songfunction 
+  //function to get random songfunction - GM
 function findSong(which) {
   return which.id === currentNumber;
 }
- //filter the songs and declare the new song as a separate variable
+ //filter the songs and declare the new song as a separate variable - GM
   detail = songs.filter(findSong);
 
-  res.render("play.jade", 
-             {detail:detail}// Inside the {} option we call the products variable from line 10 above
+  res.render("index.jade", 
+             {detail:detail}
             ); 
   console.log("Index page is up!");
   
@@ -55,7 +54,7 @@ app.get('/signup', function(req, res) {
   res.render("signup.jade"); 
 });
 
-
+//route to render the more detail page - GM
 app.get('/show/:id', function(req, res){
   res.render("show.jade",  
              {detail:detail}
@@ -63,7 +62,6 @@ app.get('/show/:id', function(req, res){
   console.log("Show is go!")
   console.log(detail);
 })
-
 
 
 // CREATES A NEW USER
@@ -85,6 +83,7 @@ app.post('/signup', function (req, res) {
     res.status(400).send({"error":"bad request"});
   }
 });
+
 
 // RETURNS ALL THE USERS IN THE DATABASE
 app.get('/signup/users', function (req, res) {
