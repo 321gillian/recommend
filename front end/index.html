@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mystery Music</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/animations.js"></script>
+	<script src="js/p5.min.js"></script>
+	<script src="js/p5.dom.min.js"></script>
+	<script src="js/p5.sound.min.js"></script>
+	<script src="js/sketch.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="header-section">
+            <div class="col"><img class="img-responsive top-bar-icon" src="img/logo.svg" alt="logo" /></div>
+            <div class="col-10"></div>
+            <div class="col"><img class="img-responsive top-bar-icon" src="img/user.svg" alt="user" /></div>
+        </div>
+        <div class="row" id="player-section">
+			<!-- p5.js puts the canvas here -->
+        </div>
+        <div class="row justify-content-md-center justify-content-lg-center" id="footer-section">
+            <div class="col-4"><p class="text-center footer-text">a mystery music app from the minds of <a class="footer-twitter-link" href="https://twitter.com/maysiogil">@maysiogil</a></p></div>
+        </div>
+    </div>
+
+
+    <!-- Modal section for introduction/welcome modal -->
+</body>
+<script>
+$(document).ready(
+    function ()
+    {
+        $("#main-fave-button").on('click', function()
+            {
+                fave_animation();
+            }
+        )
+    }
+)
+</script>
+</html>

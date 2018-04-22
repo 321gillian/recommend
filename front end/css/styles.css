@@ -1,0 +1,77 @@
+#main-fave-button {
+    width: 40px;
+    height: 40px;
+    background-color: #646464;
+    transition: background-color 0.2s ease;
+}
+
+.faved {
+    background-color: #ff6633!important;
+    transition: background-color 0.2s ease;
+}
+
+body {
+    background-color: grey;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#header-section {
+    height: 10vh;
+}
+
+.top-bar-icon {
+    margin-top: 15px;
+    max-height: 8vh;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#player-section {
+    height: 80vh;
+    padding: 30px;
+}
+
+canvas {
+    margin-right: auto;
+    margin-left: auto;
+    height: 80vh!important;
+    width: 70%!important;
+    /* background-color: #ff6633;get rid of this line once the canvas is implemented */
+}
+
+#action-buttons-row {
+    height: 0px;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#action-buttons-div {
+    display: block;
+    font-size: 3em;
+    /* height: 2em; */
+}
+
+#action-buttons-p {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: calc(-30px);
+    right: 0px;
+    transform: translateY(-100%);
+}
+
+#footer-section {
+    height: 10vh;
+}
+
+.footer-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
