@@ -6,66 +6,6 @@
  *  Plot over time.
  */
 
-var source, fft;
-
-// height of fft == height/divisions
-var divisions = 5;
-var cnv;
-var speed = 1;
-
-function preload(){
-  sound = loadSound('http://0.0.0.0:8000/music/haim.mp3', function(e){e.play()});
-}
-
-function setup() {
-
-  cnv = createCanvas(windowWidth, windowHeight);
-  cnv.parent('player-section');
-  background(255,206,188);
-  noFill();
-  stroke(237,66,100, 100);
-//   source = new p5.AudioIn();
-//   source.start();
-
-  fft = new p5.FFT(0.9, 1024);
-  sound.setVolume(0.8);
-  sound.amp(0.2);
-  fft.setInput(sound);
-  while (!sound.isLoaded())
-  sound.play();
-}
-
-function draw() {
-  var h = height/divisions;
-  var spectrum = fft.analyze();
-  var newBuffer = [];
-
-  var scaledSpectrum = splitOctaves(spectrum, 12);
-  var len = scaledSpectrum.length;
-
-  background(255,206,188, 1);
-  // copy before clearing the background
-  copy(cnv,0,0,width,height,0,speed,width,height);
-
-  // draw shape
-  beginShape();
-
-    // one at the far corner
-    curveVertex(0, h);
-
-    for (var i = 0; i < len; i++) {
-      var point = smoothPoint(scaledSpectrum, i, 2);
-      var x = map(i, 0, len-1, 0, width);
-      var y = map(point, 0, 255, h, 0);
-      curveVertex(x, y);
-    }
-
-    // one last point at the end
-    curveVertex(width, h);
-
-  endShape();
-}
-
 
 /**
  *  Divides an fft array into octaves with each

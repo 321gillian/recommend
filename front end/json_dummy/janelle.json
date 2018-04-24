@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "song": {
+        "title": "Electric Lady",
+        "id": 8,
+        "artist": "Janelle Monae, Solange",
+        "album": "The Electric Lady",
+        "year": "2013",
+        "genre": ["Funk", "Hip-hop", "Neo soul"],
+        "reviewSnippet": "Janelle Monáe's second album is looser and more physical than her 2010 debut ArchAndroid. Together with her tight-knit Wondaland collaborators (and with guest spots from Prince, Erykah Badu, Miguel, and Solange), she supervises and synthesizes a parade of golden era touchstones into a showstopping display of force and talent.",
+        "criticScore": 8.3,
+        "reviewAuthor": "Jayson Greene",
+        "reviewDate": "10/9/2013",
+        "reviewURL": "https://pitchfork.com/reviews/albums/18470-janelle-monae-the-electric-lady/",
+        "spotifyLink": "https://open.spotify.com/album/3bnHtSmmsgJiG82hGCmsq9",
+        "googlePlayLink": "https://play.google.com/store/music/album/Janelle_Mon%C3%A1e_The_Electric_Lady?id=Bh42giehlyledzvwh6zpv4lbjva&hl=en",
+        "audio": "audio/janelle.mp3",
+        "cover": "img/janelle.jpg"
+    }
+}

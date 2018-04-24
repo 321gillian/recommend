@@ -1,21 +1,38 @@
-$('#next_song_button').onclick(
-    function() 
-    {
-        $.ajax(
+function next() 
+{
+    // $.ajax(
+    //     {
+    //         url: "/next",
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         success: function(result)
+    //         {
+    //             //process result
+    //         },
+    //         error: function(e) {
+    //             //do something about the error
+    //         }
+    //     }
+    // )
+    $.ajax(
+        {
+            url: "/json_dummy/thundercat.json",
+            type: 'GET',
+            dataType: 'json',
+            success: function(result)
             {
-                url: "/next",
-                type: 'GET',
-                dataType: 'json',
-                success: function(result)
-                {
-                    //process result
-                },
-                error: function(e) {
-                    //do something about the error
-                }
+                //process result
+
+            },
+            error: function(e) {
+                //do something about the error
             }
-        )
-    }
+        }
+    )
+}
+
+$('#next_song_button').onclick(
+    next()
 )
 
 $('#signup_form').onclick(
