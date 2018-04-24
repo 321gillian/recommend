@@ -20,7 +20,7 @@
  *  @return {Array} scaledSpectrum array of the spectrum reorganized by division
  *                                 of octaves
  */
-function splitOctaves(spectrum, slicesPerOctave) {
+function splitOctaves(spectrum, slicesPerOctave, sketch) {
   var scaledSpectrum = [];
   var len = spectrum.length;
 
@@ -36,7 +36,7 @@ function splitOctaves(spectrum, slicesPerOctave) {
 
 
   while (i > lowestBin) {
-    var nextBinIndex = round( binIndex/nthRootOfTwo );
+    var nextBinIndex = sketch.round( binIndex/nthRootOfTwo );
 
     if (nextBinIndex === 1) return;
 

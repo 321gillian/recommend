@@ -1,12 +1,12 @@
 {
     "status": 200,
-    "song": {
+    "song_info": {
         "title": "Show You The Way",
         "id": 12,
         "artist": "Thundercat, Michael McDonald, Kenny Loggins",
         "album": "Drunk",
         "year": "2017",
-        "genre": ["R&B", "Neo soul", "Soul"],
+        "genre": "Funk",
         "reviewSnippet": "All this cosmic morbidity leaned on Thundercat’s music, which takes on many forms all at once: ’70s funk, R&B, punk with tinges of fusion. His art is undeniably black, yet the structures are loose enough to pull in all sorts of listeners.",
         "criticScore": 8.5,
         "reviewAuthor": "Marcus J. Moore",

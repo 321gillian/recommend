@@ -1,11 +1,11 @@
-function initial_place_buttons()
+function initial_place_buttons(sketch)
 {
-    fave_and_next_buttons_container = createElement(
+    fave_and_next_buttons_container = sketch.createElement(
         'span'
     );
     fave_and_next_buttons_container.style('line-height', '1');
 
-    fave_button = createElement('i');
+    fave_button = sketch.createElement('i');
     fave_button.addClass('fas');
     fave_button.addClass('fa-heart');
     fave_button.id('main-fave-button');
@@ -18,12 +18,15 @@ function initial_place_buttons()
     )
     fave_button.parent(fave_and_next_buttons_container);
 
-    next_track_button = createElement('i');
+    next_track_button = sketch.createElement('i');
     next_track_button.addClass('fas');
     next_track_button.addClass('fa-step-forward');
     next_track_button.attribute('aria-hidden', 'true');
-    next_track_button.id('next-track-button');
+    next_track_button.id('next-song-button');
     next_track_button.parent(fave_and_next_buttons_container);
+    $('#next-song-button').click(
+        function () {next(false);}
+    );
 
     fave_and_next_buttons_container.parent('player-section');
     fave_and_next_buttons_container.id('action-buttons-div');
@@ -33,19 +36,19 @@ function initial_place_buttons()
     fave_and_next_buttons_container.position(dx, dy);
 }
 
-function place_song_info()
+function place_song_info(sketch)
 {
-    var song_info_div = createElement('div');
+    var song_info_div = sketch.createElement('div');
     song_info_div.id('song-info-div');
     song_info_div.parent('player-section');
     song_info_div.position(
-        cx + x_offset + height*scale_const + 15,
-        cy + (height*(1-scale_const)/2)
+        cx + x_offset + sketch.height*scale_const + 15,
+        cy + (sketch.height*(1-scale_const)/2)
     );
     song_info_div.size(
-        width - (cx + x_offset + height*scale_const + 15) - x_offset,
-        height*scale_const);
-    var fave_and_next_buttons_container = select('#action-buttons-div');
+        sketch.width - (cx + x_offset + sketch.height*scale_const + 15) - x_offset,
+        sketch.height*scale_const);
+    var fave_and_next_buttons_container = sketch.select('#action-buttons-div');
     fave_and_next_buttons_container.style('z-index', '100000');
 }
 
