@@ -1,17 +1,36 @@
 //serverside js
 
+//we chose const instead of var because we want our variable not to change after it has been intiated.
 const express = require("express");
 const app = express();
 var path = require("path");
 const bodyParser = require('body-parser')
 var session = require('client-sessions');
 
+
+//route to render the favourites.jade page
+app.get('/favourites', function(req, res) {
+  res.render("favourites.jade"); 
+});
+
+//tells the app to add the selected song to the user's profile
+app.get('/')
+
+//tells the app to choose and display profile with selected songs
+
+
+// this tells the app thats the static pages are view and our dirname
 app.use(express.static(__dirname + '/views'));
+
+//tells the app to use the bodyparser to extract requests from the http post and display it on our app.
+//this tells the system that we wnat to use json
 app.use(bodyParser.json());
+
+// tells the system to convert the url coded objects into a string
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 
-//session handler middleware
+//this is the session handler middleware
 app.use(session({
   cookieName: 'session',
   secret: 'i am a secret mystery music app',
@@ -19,17 +38,22 @@ app.use(session({
   activeDuration: 5 * 60 * 1000,
 }));
 
+//this indicates that the tmeplate engiene is in jade.
 app.set("view engine", " jade");
 
+// this tells the app thats the static pages are view and routes
 app.use(express.static("views"));
 app.use(express.static("routes"));
 
+//our mongoose model schema for our application data
 var mongoose = require ('mongoose');
 mongoose.connect('mongodb://mysterymusicapp:mysterymusicapp@ds249079.mlab.com:49079/mysterymusicapp')
 
-var songs = require("./model/songs.json"); // allow the app to access the products.json file
+//allows our app to access the songs.json file
+var songs = require("./model/songs.json"); 
 var user = require('./model/user');
 
+//tells the app to render the songs from the index pag
 app.get('/' , function(req, res){
   res.render("index.jade", 
              {songs:songs} // Inside the {} option we call the products variable from line 10 above 
@@ -43,8 +67,7 @@ app.get('/signup', function(req, res) {
   res.render("signup.jade"); 
 });
 
-
-// CREATES A NEW USER
+// creates a new user
 app.post('/signup', function (req, res) {
   if (req.body.password && req.body.email &&
       req.body.firstname && req.body.lastname)
@@ -64,14 +87,14 @@ app.post('/signup', function (req, res) {
   }
 });
 
-// RETURNS ALL THE USERS IN THE DATABASE
+// returns all the users in our database
 app.get('/signup/users', function (req, res) {
     user.find({}, function (err, users) {
         if (err) return res.status(500).send("There was a problem finding the users.");
         res.status(200).send(users);
     });
 });
-//Read and take login requests
+//read and takes login requests
 app.get('/login', function(req, res) {
   if (req.session && req.session.user)
   {
@@ -101,13 +124,13 @@ app.post('/login', function(req, res){
   }
 });
 
-
+//tell the app to render to the profile page
 app.get('/profile', function(req, res) {
-  if (req.session && req.session.user) { // Check if session exists
-    // lookup the user in the DB by pulling their email from the session
+  if (req.session && req.session.user) { // Checks if session exists
+    // lookup the user in the database by pulling their email from the session
     user.findOne({ email: req.session.user.email }, function (err, user) {
       if (!user) {
-        // if the user isn't found in the DB, reset the session info and
+        // if the user isn't found in the database, this will reset the session info and
         // redirect the user to the login page
         req.session.reset();
         res.redirect('/login');
@@ -124,20 +147,22 @@ app.get('/profile', function(req, res) {
   }
 });
 
+//tell the app to render to the profile page
 app.post('/profile/update', function(req, res) {
   if (req.body.firstname && req.body.lastname){
-    if (req.session && req.session.user) { // Check if session exists
-      // lookup the user in the DB by pulling their email from the session
+    if (req.session && req.session.user) { // Checks if session exists
+      // lookup the user in the database by pulling their email from the session
       user.findOne({ email: req.session.user.email }, function (err, user_found) {
         if (!user_found) {
-          // if the user isn't found in the DB, reset the session info and
+          // if the user isn't found in the database, reset the session info and
           // redirect the user to the login page
+          
           req.session.reset();
           res.status(500).send({
               "success": false, "msg": "unknown user failed to update profile"
           });
         } else {
-          // updated firstname and lastname
+          // updates the firstname and lastname
           user_found.firstname = req.body.firstname
           user_found.lastname = req.body.lastname
           user_found.save(function(err, doc){
@@ -156,6 +181,7 @@ app.post('/profile/update', function(req, res) {
   }
 });
 
+//route to render the logout page and makes sure that the session resets by going back to the login page
 app.get('/logout', function(req, res) {
   req.session.reset();
   res.redirect('/login');
