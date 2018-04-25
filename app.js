@@ -7,18 +7,6 @@ var path = require("path");
 const bodyParser = require('body-parser')
 var session = require('client-sessions');
 
-
-//route to render the favourites.jade page
-app.get('/favourites', function(req, res) {
-  res.render("favourites.jade"); 
-});
-
-//tells the app to add the selected song to the user's profile
-app.get('/')
-
-//tells the app to choose and display profile with selected songs
-
-
 // this tells the app thats the static pages are view and our dirname
 app.use(express.static(__dirname + '/views'));
 
@@ -61,6 +49,56 @@ app.get('/' , function(req, res){
   console.log("Index page is up!");
   
 })
+
+
+//route to render the favourites.jade page
+app.get('/songselector', function(req, res) {
+  res.render("song_selector.jade"); 
+});
+
+
+//tells the app to choose and display profile with selected songs
+app.post('/favourite_song', function (req, res) {
+  // check song_id in body and user is logged.
+  // song_id is an int
+  if (req.body.song_id && req.session && req.session.user)
+  {
+    var song_object = null;
+    for (i=0; i<songs.length; i++){
+        if(songs[i]['id'] === req.body.song_id){
+          song_object = songs[i];
+          break;
+        }
+    }
+    if (song_object === null){
+       res.status(500).send({
+          "success": false, "msg": "unknown song id"
+        });
+    }else{
+      user.findOne({ email: req.session.user.email }, function (err, user) {
+        if (!user) {
+          req.session.reset();
+          res.status(500).send({
+            "success": false, "msg": "unknown user failed to update song"
+          });
+        }else{
+          //adding favourite song to profile
+          user.favourites.push(song_object);
+          user.save(function(err, doc){
+              if (err) return res.send(500, { "success": false, error: err });
+              res.status(200).send({
+                "success": true, "msg": "profile updated with song"
+              });
+          });
+        }
+      })
+    }
+  }else{
+    res.status(400).send({"error":"bad request"});
+  }
+});
+
+
 
 //route to render the signup.jade page
 app.get('/signup', function(req, res) {
@@ -193,7 +231,7 @@ app.get('/profile_update', function(req, res) {
   
 });
 
-app.listen(process.env.PORT || 3003, process.env.IP || "0.0.0.0", function() {
+app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
 console.log("Yippee its running");
 
 });
