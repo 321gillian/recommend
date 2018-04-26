@@ -6,6 +6,7 @@ var UserSchema = new mongoose.Schema({
   userid: String,
   firstname: String,
   lastname: String,
+  favourites: [{}],
 });
 
 mongoose.model('User', UserSchema);
