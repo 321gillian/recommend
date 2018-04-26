@@ -17,3 +17,19 @@ submit.addEventListener("click", function(){
     
   }));
 });
+
+//change me!
+var click = document.getElementById("update profile");
+submit.addEventListener("click", function(){
+  var favouritesContainer = document.getElementById("favourites");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("DELETE", "/profile/update");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+	xmlhttp.send(JSON.stringify({
+    firstname:firstNameContainer.value,
+    lastname:lastNameContainer.value, 
+    password:passwordContainer.value,
+    favourites:favouritesContainer.value
+    
+  }));
+});
