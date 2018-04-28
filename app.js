@@ -29,7 +29,9 @@ app.use(session({
 }));
 
 //this indicates that the tmeplate engiene is in jade.
-app.set("view engine", " jade");
+//app.set("view engine", " jade");
+app.set('view engine', 'ejs');
+
 
 // this tells the app thats the static pages are view and routes
 app.use(express.static("views"));
@@ -57,7 +59,7 @@ function findSong(which) {
  //filter the songs and declare the new song as a separate variable - GM
   detail = songs.filter(findSong);
 
-  res.render("index.jade", 
+  res.render("index.ejs", 
              {detail:detail}
             ); 
   console.log("Index page is up!");
@@ -65,9 +67,9 @@ function findSong(which) {
 })
 
 
-//route to render the favourites.jade page
+//route to render the songselector page
 app.get('/songselector', function(req, res) {
-  res.render("song_selector.jade"); 
+  res.render("song_selector.ejs"); 
 });
 
 
@@ -154,14 +156,14 @@ app.delete('/favourite_song', function (req, res) {
   }
 });
 
-//route to render the signup.jade page
+//route to render the signup.ejs page
 app.get('/signup', function(req, res) {
-  res.render("signup.jade"); 
+  res.render("signup.ejs"); 
 });
 
 //route to render the more detail page - GM
 app.get('/show/:id', function(req, res){
-  res.render("show.jade",  
+  res.render("show.ejs",  
              {detail:detail}
             );
   console.log("Show is go!")
@@ -202,7 +204,7 @@ app.get('/login', function(req, res) {
   {
     return res.redirect('/profile');
   }else{
-    res.render("login.jade"); 
+    res.render("login.ejs"); 
   }
 });
 
@@ -300,7 +302,7 @@ app.get('/profile_update', function(req, res) {
         req.session.reset();
         res.redirect('/login');
       } else { 
-        res.render("profile_update.jade", {"favourites": user.favourites});
+        res.render("profile_update.ejs", {"favourites": user.favourites});
        
       }
       
@@ -309,11 +311,11 @@ app.get('/profile_update', function(req, res) {
 
     
   }else{
-    res.render("profile_update.jade");
+    res.render("profile_update.ejs");
   }
 });
 
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
+app.listen(process.env.PORT || 3003, process.env.IP || "0.0.0.0", function() {
 console.log("Yippee its running");
 
 });

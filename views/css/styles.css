@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Righteous';
+  src: url('/fonts/Righteous/Righteous.ttf');
+}
+@font-face {
+    font-family: "Righteous";
+    src: url("fonts/Righteous/Righteous-Bold.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Righteous";
+    src: url("fonts/Righteous/Righteous-Oblique.ttf");
+    font-style: italic, oblique;
+}
+@font-face {
+    font-family: "Righteous";
+    src: url("fonts/Righteous/Righteous-BoldOblique.ttf");
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
+#main-fave-button {
+    color: #646464;
+    transition: color 0.2s ease;
+}
+
+#next-track-button {
+    color: #646464;
+}
+
+.faved {
+    color: #ff6633!important;
+    transition: color 0.2s ease;
+}
+
+body {
+    background-color: grey;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#header-section {
+    height: 10vh;
+}
+
+.top-bar-icon {
+    margin-top: 15px;
+    max-height: 8vh;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#player-section {
+    height: 80vh;
+    padding: 30px;
+}
+
+canvas {
+    margin-right: auto;
+    margin-left: auto;
+    /* width: 70%!important; */
+    /* background-color: #ff6633;get rid of this line once the canvas is implemented */
+}
+
+
+#song-info-div {
+    width: 100px;
+    height: 100px;
+    background-color: #33333331;
+}
+/* #action-buttons-row {
+    height: 0px;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+} */
+
+#action-buttons-div {
+    /* display: block; */
+    font-size: 3em;
+    /* height: 2em; */
+}
+
+/* #action-buttons-p {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: calc(-30px);
+    right: 0px;
+    transform: translateY(-100%);
+} */
+
+#footer-section {
+    height: 10vh;
+}
+
+.footer-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

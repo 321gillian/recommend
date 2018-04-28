@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+    <h1>Mystery Music App</h1>
+    <h2>Profile Page</h2>
+    <label for="firstname">First Name:</label><input id="firstname" type="text"><br>
+    <label for="lastname">Last Name:</label><input id="lastname" type="text"><br>
+    <label for="email">Email:</label><input id="email" email="email" type="text" placeholder=" Enter your email"><br>
+    <label for="password">Password:</label><input id="password" type="password"><br>
+    <br>
+    <button id="update profile" type="submit">Create new account</button>
+    <br>
+    <ul>
+     <% favourites.forEach(function(item) { %>
+      <li><%= item.title %></li>
+       <button class="remove_song" type="submit" value="<%= item.id %>">Remove <%= item.title %></button>
+    </ul>
+      <a href="show/<%= song.id %>"><button type="button">More info</button></a>
+  <% }); %>
+  </body>
+  <script src="./media/profile_update.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>
