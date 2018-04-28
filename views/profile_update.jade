@@ -23,7 +23,12 @@ html
         input(id="password",type='password')
         
         button.button(id= "update profile",type="submit") Update Profile
-      
+        br
+        ul
+        each item in favourites
+            li=item.title
+            button.button(class="remove_song",type="submit", value="#{item.id}") remove #{item.title}
+
        
          
    script(src='./media/profile_update.js')
