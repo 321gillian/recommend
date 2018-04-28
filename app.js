@@ -7,18 +7,6 @@ var path = require("path");
 const bodyParser = require('body-parser')
 var session = require('client-sessions');
 
-
-//route to render the favourites.jade page
-app.get('/favourites', function(req, res) {
-  res.render("favourites.jade"); 
-});
-
-//tells the app to add the selected song to the user's profile
-app.get('/')
-
-//tells the app to choose and display profile with selected songs
-
-
 // this tells the app thats the static pages are view and our dirname
 app.use(express.static(__dirname + '/views'));
 
@@ -76,6 +64,96 @@ function findSong(which) {
   
 })
 
+
+//route to render the favourites.jade page
+app.get('/songselector', function(req, res) {
+  res.render("song_selector.jade"); 
+});
+
+
+//tells the app to choose and display profile with selected songs
+app.post('/favourite_song', function (req, res) {
+  // check song_id in body and user is logged.
+  // song_id is an int
+  if (req.body.song_id && req.session && req.session.user)
+  {
+    var song_object = null;
+    for (i=0; i<songs.length; i++){
+        if(songs[i]['id'] === req.body.song_id){
+          song_object = songs[i];
+          break;
+        }
+    }
+    if (song_object === null){
+       res.status(500).send({
+          "success": false, "msg": "unknown song id"
+        });
+    }else{
+      user.findOne({ email: req.session.user.email }, function (err, user) {
+        if (!user) {
+          req.session.reset();
+          res.status(500).send({
+            "success": false, "msg": "unknown user failed to update song"
+          });
+        }else{
+          //adding favourite song to profile
+          user.favourites.push(song_object);
+          user.save(function(err, doc){
+              if (err) return res.send(500, { "success": false, error: err });
+              res.status(200).send({
+                "success": true, "msg": "profile updated with song"
+              });
+          });
+        }
+      })
+    }
+  }else{
+    res.status(400).send({"error":"bad request"});
+  }
+});
+
+
+//to remove an already favourited song.
+app.delete('/favourite_song', function (req, res) {
+  // check song_id in body and user is logged.
+  // song_id is an int
+  if (req.body.song_id && req.session && req.session.user)
+  {
+    var song_object = null;
+    for (i=0; i<songs.length; i++){
+        if(songs[i]['id'] === req.body.song_id){
+          song_object = songs[i];
+          break;
+        }
+    }
+    if (song_object === null){
+       res.status(500).send({
+          "success": false, "msg": "unknown song id"
+        });
+    }else{
+      user.findOne({ email: req.session.user.email }, function (err, user) {
+        if (!user) {
+          req.session.reset();
+          res.status(500).send({
+            "success": false, "msg": "unknown user failed to remove song"
+          });
+        }else{
+          //removing favourite song from profile
+          user.favourites.pull(song_object);
+          user.save(function(err, doc){
+              if (err) return res.send(500, { "success": false, error: err });
+              res.status(200).send({
+                "success": true, "msg": "profile removed song"
+              });
+          });
+        }
+      })
+    }
+  }else{
+    res.status(400).send({"error":"bad request"});
+  }
+});
+
 //route to render the signup.jade page
 app.get('/signup', function(req, res) {
   res.render("signup.jade"); 
@@ -112,7 +190,7 @@ app.post('/signup', function (req, res) {
 });
 
 // returns all the users in our database
-app.get('/signup/users', function (req, res) {
+app.get('/signup/user', function (req, res) {
     user.find({}, function (err, users) {
         if (err) return res.status(500).send("There was a problem finding the users.");
         res.status(200).send(users);
@@ -138,6 +216,7 @@ app.post('/login', function(req, res){
           //sets a cookie with user info
           req.session.user = user;
           res.status(200).send({"success":true, "msg":"Successfully logged in"});
+          
         } else {
           res.status(401).send({"success":false, "msg":"Bad Username or Password"});
         }
@@ -211,10 +290,27 @@ app.get('/logout', function(req, res) {
   res.redirect('/login');
 });
 
-//route to render the profile update page
+//route to render the profile update page and remove a song from favourites
 app.get('/profile_update', function(req, res) {
-  res.render("profile_update.jade");
+  if (req.session && req.session.user){
+      user.findOne({ email: req.session.user.email }, function (err, user) {
+      if (!user) {
+        // if the user isn't found in the database, this will reset the session info and
+        // redirect the user to the login page
+        req.session.reset();
+        res.redirect('/login');
+      } else { 
+        res.render("profile_update.jade", {"favourites": user.favourites});
+       
+      }
+      
+    });
   
+
+    
+  }else{
+    res.render("profile_update.jade");
+  }
 });
 
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {

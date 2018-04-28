@@ -13,7 +13,26 @@ submit.addEventListener("click", function(){
     firstname:firstNameContainer.value,
     lastname:lastNameContainer.value, 
     password:passwordContainer.value,
-    favourites:favouritesContainer.value
+   
     
   }));
 });
+
+
+var remove_song = function() {
+  console.log("working");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("DELETE", "/favourite_song");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+	xmlhttp.send(JSON.stringify({
+    "song_id": parseInt(this.value, 10),
+  }));
+};
+
+//change me!
+var click = document.getElementsByClassName("remove_song");
+
+for (var i = 0; i < click.length; i++) {
+    click[i].addEventListener('click', remove_song, false);
+}
+
