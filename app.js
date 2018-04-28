@@ -124,7 +124,7 @@ app.delete('/favourite_song', function (req, res) {
             "success": false, "msg": "unknown user failed to remove song"
           });
         }else{
-          //removing favourite song to profile
+          //removing favourite song from profile
           user.favourites.pull(song_object);
           user.save(function(err, doc){
               if (err) return res.send(500, { "success": false, error: err });

@@ -10,3 +10,4 @@ submit.addEventListener("click", function(){
     song_id:parseInt(song_id.value, 10),
   }));
 });
+
