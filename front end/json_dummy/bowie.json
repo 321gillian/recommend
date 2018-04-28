@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "song_info": {
+        "title": "Fame",
+        "id": 2,
+        "artist": "David Bowie",
+        "album": "Young Americans",
+        "year": "1975",
+        "genre": "Rock",
+        "reviewSnippet": "Young Americans represented David Bowie's dive into soul music, particularly Philly Soul. Containing the stunning funk single Fame, the album felt like a vehicle for Bowie to address one of his favorite topics—pop stardom—from a new angle, at a moment when it seemed likely to destroy him.",
+        "criticScore": 8.7,
+        "reviewAuthor": "Douglas Wolk",
+        "reviewDate": "22/1/2016",
+        "reviewURL": "https://pitchfork.com/reviews/albums/21488-young-americans/",
+        "spotifyLink": "https://open.spotify.com/album/3VHW81P7SsBqPBGjiCJRXj",
+        "googlePlayLink": "https://play.google.com/store/music/album/David_Bowie_Young_Americans_2016_Remastered_Versio?id=B33y6j7ualgguue3faty3f4wiie",
+        "audio": "audio/bowie.mp3",
+        "cover": "img/covers/bowie.jpg"
+    }
+}

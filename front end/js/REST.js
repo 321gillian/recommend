@@ -1,63 +1,21 @@
+'use strict';
 function next(first_time) 
 {
-    // $.ajax(
-    //     {
-    //         url: "/next",
-    //         type: 'GET',
-    //         dataType: 'json',
-    //         success: function(result)
-    //         {
-    //             //process result
-    //         },
-    //         error: function(e) {
-    //             //do something about the error
-    //         }
-    //     }
-    // )
     var first_time = first_time;
-    var choices = ['janelle', 'thundercat'];
-    var choice = choices[Math.floor(Math.random()*choices.length)]
+    var choices = ['janelle', 'thundercat', 'bowie', 'parton', 'haim', 'grace'];
+    var choice = choices[Math.floor(Math.random()*choices.length)];
     $.ajax(
         {
+            // url: "/next",
+            // type: 'GET',
+            // dataType: 'json',
+            // success: function(data)
             url: "/json_dummy/"+choice+".json",
             type: 'GET',
             dataType: 'json',
             success: function(data)
             {
-                //process result
-                // console.log(result);
-                // var data = JSON.parse(result);
-                song_info = data.song_info;
-                if (song_info.genre == "Pop") 
-                {
-                    $('body').css('background', 'linear-gradient(to bottom, #ED4264, #FFCEBC)')
-                }
-                else if (song_info.genre == "Funk") 
-                {
-                    $('body').css('background', 'linear-gradient(to bottom, #45A247, #283C86)')
-                }
-                console.log(first_time);
-                if (first_time == true)
-                {
-                    p5instance = new p5(s);
-                }
-                else 
-                {
-                    sound.stop();
-                    sound = sketch_instance.loadSound(
-                        song_info.audio, //resource to load
-                        function(s) // callback function for success
-                        {
-                            s.setVolume(1.0);
-                            s.play();
-                        }, 
-                        function(e){alert(e)} // callback function for error
-                    );
-                    albumart = sketch_instance.loadImage(song_info.cover);
-                    sketch_vis_colors(sketch_instance);
-                    vis.song_file = sound;
-                    
-                }
+                next_song_animation();
             },
             error: function(e) {
                 //do something about the error

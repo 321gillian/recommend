@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "song_info": {
+        "title": "Coat of Many Colours",
+        "id": 5,
+        "artist": "Dolly Parton",
+        "album": "Coat of Many Colours",
+        "year": "1971",
+        "genre": "Folk",
+        "reviewSnippet": "Of course Dolly Parton is a sentimentalist: The whole point of her work is to get across what it's like to feel things incredibly strongly and without reservation. She makes Andrew W.K. sound like Grace Jones.",
+        "criticScore": 7.0,
+        "reviewAuthor": "Douglas Wolk",
+        "reviewDate": "13/4/2007",
+        "reviewURL": "https://pitchfork.com/reviews/albums/11900-coat-of-many-colorsmy-tennessee-mountain-homejolene/",
+        "spotifyLink": "https://open.spotify.com/album/0ihBM9U8RmU99Z3amECh60",
+        "googlePlayLink": "https://play.google.com/store/music/album/Dolly_Parton_Coat_Of_Many_Colors?id=Bqlv633bb4qv3fcj4okuodnm6gm",
+        "audio": "audio/dolly.mp3",
+        "cover": "img/covers/dolly.jpg"
+    }
+}
