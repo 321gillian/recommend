@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "song_info": {
+        "title": "Pull Up To The Bumper",
+        "id": 1,
+        "artist": "Grace Jones",
+        "album": "Nightclubbing",
+        "year": "1981",
+        "genre": "Funk",
+        "reviewSnippet": "In 1980, Grace Jones decamped to Compass Point Studios in Nassau, Bahamas where she worked with producers Alex Sadkin and Island Records’ president Chris Blackwell, as well as a crack team of session musicians rooted by the rhythmic reggae force of Sly & Robbie. Across three critical and commercial hit albums, with 1981’s Nightclubbing as her pinnacle, Jones reinvented herself while also altering the face of modern pop.",
+        "criticScore": 9.0,
+        "reviewAuthor": "Andy Beta",
+        "reviewDate": "1/5/2014",
+        "reviewURL": "https://pitchfork.com/reviews/albums/19222-grace-jones-nightclubbing-deluxe-edition/",
+        "spotifyLink": "https://open.spotify.com/album/0Asrv0BRKSQcRPMcfFFXaK",
+        "googlePlayLink": "https://play.google.com/music/preview/Bfwy2vqmwlp3kwh37tcfz333rwe?u=0#",
+        "audio": "audio/grace.mp3",
+        "cover": "img/covers/grace.jpg"
+    }
+}

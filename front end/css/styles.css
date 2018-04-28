@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Righteous';
-  src: url('/fonts/Righteous/Righteous.ttf');
+  src: url('/fonts/Righteous/Righteous-Regular.ttf');
 }
-@font-face {
+/* @font-face {
     font-family: "Righteous";
     src: url("fonts/Righteous/Righteous-Bold.ttf");
     font-weight: bold;
@@ -17,7 +17,7 @@
     src: url("fonts/Righteous/Righteous-BoldOblique.ttf");
     font-weight: bold;
     font-style: italic, oblique;
-}
+} */
 
 #main-fave-button {
     color: #646464;
@@ -34,10 +34,172 @@
 }
 
 body {
-    background-color: grey;
-    width: 100vw;
-    height: 100vh;
+    background-image: linear-gradient(to bottom, grey, grey);
+    /* width: 100vw;
+    height: 100vh; */
     overflow: hidden;
+    /* -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease; */
+    z-index: -101;
+}
+
+#bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 0;
+    z-index: -100;
+}
+
+.Pop {
+    background-image: linear-gradient(to bottom, #ED4264, #FFCEBC);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+.Funk {
+    background-image: linear-gradient(to bottom, #45A247, #283C86);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+.Rock {
+    background-image: linear-gradient(to bottom, #DCE35B, #45B649);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+.Alternative {
+    background-image: linear-gradient(to bottom, #005AA7, #FFFDE4);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+.Folk {
+    background-image: linear-gradient(to bottom, #43C6AC, #F8FFAE);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+.Electronica {
+    background-image: linear-gradient(to bottom, #5C258D, #4389A2);
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1!important;
+}
+
+#song-info-div {
+    font-family: 'Righteous'!important;
+    color: white;
+    padding: 15px;
+}
+
+#track-title {
+    text-shadow: 1px 0 0 currentColor;
+    transform: skewX(-10deg);
+}
+
+#artist-and-year {
+}
+
+.score-and-author {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    max-height: 15vh;
+}
+
+#pitchfork-logo {
+    width: 100%;
+}
+
+.review-score-container {
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+    width: 7vh;
+    height: 7vh;
+    border: 10px solid white;
+    border-radius: 50%;
+    font-size: 1.5em;
+}
+
+/* .review-score-container {
+    display: block;
+    content: "";
+    padding-bottom: 100%;
+} */
+
+.review-score {
+    position: relative;
+    color: white;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#review-snippet-container {
+    border-left: 10px solid white;
+    color: white;
+    text-decoration: none;
+}
+
+#review-snippet-container a {
+    text-decoration: none;
+    color: white;
+}
+
+#review-snippet-container a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#spotify-and-play-links-container {
+    /* width: 50%; */
+    
+}
+
+#spotify-and-play-links-container img {
+    max-height: 6vh;
+    margin-top: 15px;
+}
+
+#spotify-and-play-links-div{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#spotify-link {
+    margin-right: 15px;
+}
+
+#play-link {
+    margin-left: 15px;
 }
 
 #header-section {
@@ -65,22 +227,10 @@ canvas {
     /* background-color: #ff6633;get rid of this line once the canvas is implemented */
 }
 
-
-#song-info-div {
-    width: 100px;
-    height: 100px;
-    background-color: #33333331;
-}
-/* #action-buttons-row {
-    height: 0px;
-    width: 70%;
-    margin-right: auto;
-    margin-left: auto;
-} */
-
 #action-buttons-div {
     /* display: block; */
-    font-size: 3em;
+    font-size: 5vh;
+    color: #646464;
     /* height: 2em; */
 }
 

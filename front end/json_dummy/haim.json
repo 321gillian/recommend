@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "song_info": {
+        "title": "Want You Back",
+        "id": 4,
+        "artist": "Haim",
+        "album": "Something To Tell You",
+        "year": "2017",
+        "genre": "Alternative",
+        "reviewSnippet": "Haim’s glossy second album is slyly complex. The California sisters remain masters of rhythm and create spacious pop-rock full of heartbreak, longing, and betrayal.",
+        "criticScore": 7.8,
+        "reviewAuthor": "Jenn Pelly",
+        "reviewDate": "7/7/2017",
+        "reviewURL": "https://pitchfork.com/reviews/albums/haim-something-to-tell-you/",
+        "spotifyLink": "https://open.spotify.com/album/3EFSOzgqaOQqJCMAMMn4Cl",
+        "googlePlayLink": "https://play.google.com/store/music/album/HAIM_Something_To_Tell_You?id=Bs4efihu7rhnqaiperwqi4eegoy",
+        "audio": "audio/haim.mp3",
+        "cover": "img/covers/haim.jpg"
+    }
+}
