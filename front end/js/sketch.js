@@ -65,13 +65,13 @@ class Visualiser
             // copy before clearing the background
             sketch_instance.noStroke();
             sketch_instance.fill(vc1);
-            // rect(this.zx, this.zy, this.w, this.h);
+            // rect(sketch_instance.int(this.zx), this.zy, this.w, this.h);
 
             sketch_instance.noSmooth();
-            // console.log(this.zx, this.zy);
-            sketch_instance.image(this.last_frame, this.zx, this.zy+this.speed+1);
+            // console.log(sketch_instance.int(this.zx), this.zy);
+            sketch_instance.image(this.last_frame, sketch_instance.int(this.zx), this.zy+this.speed+1);
             sketch_instance.smooth();
-            // copy(this.cnv,this.zx,this.zy,this.w,this.h,this.zx,this.zy+this.speed,this.w,this.h);
+            // copy(this.cnv,sketch_instance.int(this.zx),this.zy,this.w,this.h,sketch_instance.int(this.zx),this.zy+this.speed,this.w,this.h);
             
             // console.log(this.vc1);
             
@@ -81,22 +81,22 @@ class Visualiser
             sketch_instance.beginShape();
 
             // one at the far corner
-            sketch_instance.curveVertex(this.zx, this.zy+this.y_off*2);
+            sketch_instance.curveVertex(sketch_instance.int(this.zx), this.zy+this.y_off*2);
 
             for (var i = 0; i < len; i++) {
                 var p = smoothPoint(scaledSpectrum, i, 2);
-                var x = sketch_instance.map(i, 0, len-1, this.zx+1, this.zx+this.w-1);
+                var x = sketch_instance.map(i, 0, len-1, sketch_instance.int(this.zx)+1, sketch_instance.int(this.zx)+this.w-1);
                 var y = sketch_instance.map(p, 0, 255, this.zy+this.y_off*2.5, this.zy+this.y_off/4);
                 sketch_instance.curveVertex(x, y);
             }
 
             // one last point at the end
-            sketch_instance.curveVertex(this.zx+this.w, this.zy+this.y_off*2);
+            sketch_instance.curveVertex(sketch_instance.int(this.zx)+this.w, this.zy+this.y_off*2);
 
 
             sketch_instance.endShape();
-            // console.log(this.zx,this.zy+1);
-            this.last_frame = sketch_instance.get(this.zx,this.zy+1,sketch_instance.int(this.w),sketch_instance.int(this.h)-this.speed);
+            // console.log(sketch_instance.int(this.zx),this.zy+1);
+            this.last_frame = sketch_instance.get(sketch_instance.int(this.zx),this.zy+1,sketch_instance.int(this.w),sketch_instance.int(this.h)-this.speed);
         }
     }
 }

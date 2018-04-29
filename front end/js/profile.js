@@ -1,3 +1,9 @@
+function toggle_side_menu()
+{
+    $('#main-side-bar').toggleClass('revealed-side-bar');
+    $('#user-menu-button-image').toggleClass('transparent-button');
+}
+
 function save_profile()
 {
     $.ajax(
