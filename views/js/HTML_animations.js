@@ -64,7 +64,7 @@ function unfave_animation()
     
 }
 
-function next_song_animation()
+function next_song_animation(data, first_time)
 {
     //process result
     // console.log(result);
