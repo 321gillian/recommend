@@ -152,3 +152,76 @@ function play_specific_song(songID)
         }
     )
 }
+
+function get_favourites()
+{
+    $.ajax
+    (
+        {
+            url: "/favourites",
+            type: 'GET',
+            dataType: 'json',
+            success: function(data)
+            {
+                // process result
+                // data should look something like this:
+
+                // { "status": 200,
+                //      "favourites": [
+                //          { ... song ... },
+                //          { ... song ... },
+                //          { ... song ... },
+                //          { ... song ... }
+                //      ]
+                // }
+                
+                // clear the favourites box
+                $('#favourites-container').empty();
+                var favourites = data.favourites;
+                if (favourites.length > 0)
+                {
+                    for (var i = 0; i < favourites.length; i++)
+                    {
+                        var song = favourites[i];
+                        $('#favourites-container').append(
+                            '<div class="col-12 liked-song">' +
+                                '<div class="col-2">' +
+                                    '<i class="fas fa-times-circle"></i>' +
+                                '</div>' +
+                                '<div class="col-8">' +
+                                    '<h4>' + song.title + '</h4>' +
+                                    '<p>' + song.artist + ' | ' + song.album + ' (' + song.year + ')</p>' +
+                                '</div>' +
+                                '<div class="col-2">'+
+                                    '<i class="fas fa-eye"></i>' +
+                                '</div>' +
+                            '</div>'
+                        );
+                    }
+                    $('#favourites-container').append(
+                        '<div class="col-12">' +
+                            '<div id="end-of-faves-dash"></div>' +
+                        '</div>' +
+                        '<div class="col-12">' +
+                            '<p>That\'s all folks!</p>' +
+                        '</div>'
+                    );
+                }
+                else
+                {
+                    $('#favourites-container').append(
+                        '<p>' +
+                            'Nothing here yet...<br>' +
+                            'When you find something you like, press the heart and it will show up here!' +
+                        '</p>'
+                    );
+                }
+            },
+            error: function(e) 
+            {
+                //do something about the error
+                alert('Something went wrong!'+'\n'+e);
+            }
+        }
+    )
+}

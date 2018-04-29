@@ -38,6 +38,7 @@ body {
     /* width: 100vw;
     height: 100vh; */
     overflow: hidden;
+    font-family: 'Righteous'!important;
     /* -webkit-transition: opacity 1s ease;
     -moz-transition: opacity 1s ease;
     -o-transition: opacity 1s ease;
@@ -213,6 +214,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+}
+
+.transparent-button {
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 #player-section {
@@ -252,4 +259,125 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#main-side-bar {
+    height: 100vh;
+    min-width: 30vw;
+    background-color: #646464e6;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    text-align: center;
+    color: white;
+    padding: 30px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.revealed-side-bar {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+
+#user-row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.avatar-editor {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #646464b0;
+    width: calc(100% - 30px);
+    height: calc(100%);
+}
+
+.avatar-editor:hover {
+    opacity: 1;
+    /* transition: opacity 0.1s ease; */
+}
+
+.avatar-editor i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+}
+
+.username {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -50%);
+}
+
+#hearts {
+    color: #2e2e2e;
+    margin-bottom: 30px;
+}
+
+#favourites-container {
+    color: white;
+    max-height: 50vh;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y: scroll;
+}
+
+.liked-song:hover {
+    color: #2e2e2e;
+}
+
+.liked-song i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.liked-song:hover i {
+    opacity: 1;
+}
+
+#end-of-faves-dash {
+    background-color: white;
+    width: 10%;
+    height: 3px;
+    margin-top: calc(15px + 1rem);
+    margin-bottom: calc(15px + 1rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.side-menu-nav-button {
+    /* padding: 30px; */
+    width: 30%;
+    min-height: 5vh;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.side-menu-nav-button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.side-menu-nav-button:hover {
+    background-color: #515151e6;
 }

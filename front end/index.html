@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/HTML_animations.js"></script>
+    <script src="js/profile.js"></script>
     <script src="js/REST.js"></script>
 	<script src="js/p5.min.js"></script>
 	<script src="js/p5.dom.min.js"></script>
@@ -31,7 +32,7 @@
         <div class="row" id="header-section">
             <div class="col-1"><img class="img-responsive top-bar-icon" src="img/logo.png" alt="logo" /></div>
             <div class="col-10"></div>
-            <div class="col-1"><img class="img-responsive top-bar-icon" src="img/user.svg" alt="user" /></div>
+            <div class="col-1"><img id="user-menu-button-image" class="img-responsive top-bar-icon" src="img/user.svg" alt="user" onclick="toggle_side_menu();" /></div>
         </div>
         <div class="row" id="player-section">
 			<!-- p5.js puts the canvas here
@@ -43,7 +44,150 @@
         </div>
     </div>
 
-
+    <!-- section for account & faves side bar -->
+    <div id="main-side-bar">
+        <div class="row" id="user-row">
+            <div class="col-1">
+            </div>
+            <div class="col-4">
+                <img class="img-responsive avatar" src="media/avatars/user.jpg" alt="username">
+                <div class="avatar-editor"> <!-- set onclick property for this to edit profile/account -->
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+            <div class="col-7">
+                <span class="h4 username">
+                    yuzernaem
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4 id="hearts">HEARTS</h4>
+            </div>
+            <div id="favourites-container" class="col-12">
+                <!-- populate this with ajax call 'get_favourites' function -->
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 1</h4>
+                        <p>Artist 1 | Album 1 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 2</h4>
+                        <p>Artist 2 | Album 2 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 3</h4>
+                        <p>Artist 3 | Album 3 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 3</h4>
+                        <p>Artist 3 | Album 3 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 4</h4>
+                        <p>Artist 4 | Album 4 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 5</h4>
+                        <p>Artist 5 | Album 5 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 6</h4>
+                        <p>Artist 6 | Album 6 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 7</h4>
+                        <p>Artist 7 | Album 7 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 8</h4>
+                        <p>Artist 8 | Album 8 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div id="end-of-faves-dash"></div>
+                </div>
+                <div class="col-12">
+                    <p>That's all folks!</p>
+                </div>
+            </div>
+        </div>
+        <div class="side-menu-nav-button" onclick="toggle_side_menu();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
     <!-- Modal section for introduction/welcome modal -->
 </body>
 <script>
@@ -51,6 +195,7 @@ $(document).ready(
     function ()
     {
         next(true);
+        get_favourites();
     }
 )
 </script>
