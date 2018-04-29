@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>title</title>
-  </head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mystery Music</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="./css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="./media/main.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/HTML_animations.js"></script>
+    <script src="./js/REST.js"></script>
+	<script src="./js/p5.min.js"></script>
+	<script src="./js/p5.dom.min.js"></script>
+	<script src="./js/p5.sound.min.js"></script>
+    <script src="./js/canvas_HTML_overlay.js"></script>
+    <script src="./js/draw_functions.js"></script>
+    <script src="./js/visualiser.js"></script>
+    <script src="./js/sketch.js"></script>
+</head>
   <body>
+      <!--main section starts-->
+      <div id="bg"></div>
+      <div class="container-fluid">
+          <div class="row" id="header-section">
+              <div class="col-1"><img class="img-responsive top-bar-icon" src="img/logo.png" alt="logo" /></div>
+              <div class="col-10"></div>
+              <div class="col-1"><img class="img-responsive top-bar-icon" src="img/user.svg" alt="user" /></div>
+          </div>
+          <div class="row" id="player-section">
+              <!-- p5.js puts the canvas here
+              <i class="fa fa-heart" aria-hidden="true"></i>
+              <i class="fa fa-step-forward" aria-hidden="true"></i> -->
+          </div>
+          <div class="row justify-content-md-center justify-content-lg-center" id="footer-section">
+              <div class="col-4"><p class="text-center footer-text">a mystery music app from the minds of <a class="footer-twitter-link" href="https://twitter.com/maysiogil">@maysiogil</a></p></div>
+          </div>
+      </div>
+      <!--main section ends-->
     <h1>Mystery Music App</h1>
     <h2>Login</h2>
     <label for="username">Username:</label><input id="username" type="text"><br>
@@ -19,6 +58,15 @@
  
  
   </body>
-  <script src="./media/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Modal section for introduction/welcome modal -->
+</body>
+   
+<script>
+$(document).ready(
+    function ()
+    {
+        next(true);
+    }
+)
+</script>
 </html>
