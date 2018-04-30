@@ -58,7 +58,7 @@ var user = require('./model/user');
 
 
 app.get('/old-index' , function(req, res){
-var currentNumber = randomNumber(1, 12);
+var currentNumber = randomNumber(1, 10);
 //function to get random songfunction - GM
 function findSong(which) {
 return which.id === currentNumber;
@@ -81,7 +81,7 @@ app.get('/songselector', function(req, res) {
 
 
 //tells the app to choose and display profile with selected songs
-app.post('/favourite_song', function (req, res) {
+app.post('/fave/:id', function (req, res) {
   // check song_id in body and user is logged.
   // song_id is an int
   if (req.body.song_id && req.session && req.session.user)
@@ -123,7 +123,7 @@ app.post('/favourite_song', function (req, res) {
 
 
 //to remove an already favourited song.
-app.delete('/favourite_song', function (req, res) {
+app.delete('/unfave/:id', function (req, res) {
   // check song_id in body and user is logged.
   // song_id is an int
   if (req.body.song_id && req.session && req.session.user)

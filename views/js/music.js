@@ -30,7 +30,7 @@ function favourite(songID)
     $.ajax
     (
         {
-            url: "/fave?songID="+songID,
+            url: "/fave/"+songID,
             type: 'POST',
             dataType: 'json',
             success: function(data)
@@ -59,7 +59,7 @@ function unfavourite(songID)
     $.ajax
     (
         {
-            url: "/unfave?songID="+songID,
+            url: "/unfave/"+songID,
             type: 'DELETE',
             dataType: 'json',
             success: function(result)
