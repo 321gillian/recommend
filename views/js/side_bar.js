@@ -1,32 +1,56 @@
+//
+// functions for toggling between the various side bar menus
+//
+
+// toggle the main side menu (for when the user is logged in only)
+// the class 'revealed-side-bar' just adds the transform/translation to bring the menu in from offscreen
 function toggle_side_menu()
 {
     $('#main-side-bar').toggleClass('revealed-side-bar');
     $('#user-menu-button-image').toggleClass('transparent-button');
 }
 
+// switches between the main side menu and the profile one
+// called when clicking the cog in the avatar and when the back button
+// is pressed in the Profile settings menu
+// the class 'revealed-side-bar' just adds the transform/translation to bring the menu in from offscreen
 function switch_between_main_and_profile()
 {
     $('#main-side-bar').toggleClass('revealed-side-bar');
     $('#profile-side-bar').toggleClass('revealed-side-bar');
 }
 
+// switches between the profile settings side menu and the change password one
+// called when clicking the change password button, when the back button
+// is pressed in the change password menu and when the user successfully changes their password.
+// NOTE: the last of these three has not yet been implemented
+// the class 'revealed-side-bar' just adds the transform/translation to bring the menu in from offscreen
 function switch_between_profile_and_password()
 {
     $('#profile-side-bar').toggleClass('revealed-side-bar');
     $('#password-side-bar').toggleClass('revealed-side-bar');
 }
 
+// toggle the login side menu (for when the user is NOT logged in)
+// this should be the onclick property for the user icon in the
+// top right if the user is not logged in
+// the class 'revealed-side-bar' just adds the transform/translation to bring the menu in from offscreen
 function toggle_login_menu()
 {
     $('#login-side-bar').toggleClass('revealed-side-bar');
     $('#user-menu-button-image').toggleClass('transparent-button');
 }
 
+// switches between the login side menu and the sign up one
+// the class 'revealed-side-bar' just adds the transform/translation to bring the menu in from offscreen
 function switch_between_login_and_signup()
 {
     $('#login-side-bar').toggleClass('revealed-side-bar');
     $('#signup-side-bar').toggleClass('revealed-side-bar');
 }
+
+
+
 
 function get_favourites()
 {
@@ -111,7 +135,7 @@ function save_profile()
             dataType: 'json',
             success: function(result)
             {
-                // process result
+                // process result eg. little alert banner to say changes successful/profile updated!
             },
             error: function(e) {
                 //do something about the error
@@ -141,7 +165,7 @@ function update_password()
             dataType: 'json',
             success: function(result)
             {
-                // process result
+                // process result eg. little alert banner to say changes successful
             },
             error: function(e) {
                 //do something about the error
@@ -161,7 +185,7 @@ function signup()
             dataType: 'json',
             success: function(result)
             {
-                // process result
+                // process result eg. little alert banner to say signup successful
             },
             error: function(e) {
                 //do something about the error
@@ -181,7 +205,7 @@ function login()
             dataType: 'json',
             success: function(result)
             {
-                // process result
+                // process result eg. little alert banner to say login successful
             },
             error: function(e) {
                 //do something about the error
@@ -207,7 +231,7 @@ function delete_profile()
             dataType: 'json',
             success: function(result)
             {
-                // process result
+                // process result eg. log the user out and maybe reload the page to reset everything?
             },
             error: function(e) {
                 //do something about the error
