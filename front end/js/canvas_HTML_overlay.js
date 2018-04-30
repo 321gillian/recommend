@@ -76,11 +76,6 @@ function place_song_info()
                 '<a href="' + song_info.spotifyLink + '"><img id="spotify-link" src="img/spotify.png"></a>' +
                 '<a href="' + song_info.googlePlayLink + '"><img id="play-link" src="img/play_music_triangle.png"></a>' +
             '</div>' +
-            // '<div class="col-2"></div>' +
-            // '<div class="col-4" >' +
-            // '</div>' +
-            // '<div class="col-4">' +
-            // '</div>' +
         '</div>'
     )
 }

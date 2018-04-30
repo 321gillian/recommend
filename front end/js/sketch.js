@@ -17,7 +17,7 @@ var vis; // will contain the instance of the Visualiser object
 var liked = false; // boolean for whether or not the current track has been liked
 var moving = false; // boolean for whether or not the slide-to-the-left animation is playing
 
-var draw_function; // variable to contain the draw_function currently being used in draw()
+var draw_function; // variable to contain the draw_function currently being used in sketch_instance.draw()
 
 // top left coordinates of canvas
 var cx, cy;
@@ -139,7 +139,7 @@ function sketch_vis_colors()
 
 var s = function(sketch)
 {
-    sketch_instance = sketch
+    sketch_instance = sketch;
     sketch_instance.preload = function()
     {
         // sound = sketch.loadSound(
@@ -157,8 +157,6 @@ var s = function(sketch)
 
     sketch_instance.setup = function()
     {
-        //HTML overlay
-
         //canvas
         var cnv = sketch_instance.createCanvas(sketch_instance.int($('#player-section').width()), sketch_instance.int($('#player-section').height()));
         sketch_instance.frameRate(30);
@@ -173,16 +171,16 @@ var s = function(sketch)
     }
 
     // called every frame
-    sketch.draw = function()
+    sketch_instance.draw = function()
     {
         // this function changes on certain events
         // console.log(sketch.frameRate());
         draw_function();
     }
 
-    sketch.windowResized = function()
+    sketch_instance.windowResized = function()
     {
-        sketch.resizeCanvas($('#player-section').width(), $('#player-section').height());
+        sketch_instance.resizeCanvas($('#player-section').width(), $('#player-section').height());
     }
 }
 
