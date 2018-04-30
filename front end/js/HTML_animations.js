@@ -119,16 +119,6 @@ function next_song_animation(first_time)
             sketch_instance.fill(vc1);
             sketch_instance.rect(vis.zx, vis.zy, vis.w, vis.h);
             vis.last_frame = sketch_instance.get(vis.zx,vis.zy+1,vis.w,vis.h-vis.speed);
-            vis.song_file = null;
-            vis.song_file = sketch_instance.loadSound(
-                song_info.audio, //resource to load
-                function(s) // callback function for success
-                {
-                    s.setVolume(1.0);
-                    s.play();
-                }, 
-                function(e){alert(e)} // callback function for error
-            );
         }
         else {
             vis.song_file.stopAll();
