@@ -25,7 +25,7 @@ function fave_animation()
             $("#main-fave-button").prop('onclick',null).off('click');
             $("#main-fave-button").on('click', function()
             {
-                unfave_animation();
+                unfavourite(song_info.id);
             })
         }
     );
@@ -57,7 +57,7 @@ function unfave_animation()
             $("#main-fave-button").prop('onclick',null).off('click');
             $("#main-fave-button").on('click', function()
             {
-                fave_animation();
+                favourite(song_info.id);
             })
         }
     );

@@ -14,7 +14,7 @@ function initial_place_buttons()
     fave_button.style('margin-right', '15px');
     $("#main-fave-button").on('click', function()
         {
-            fave_animation();
+            favourite(song_info.id);
         }
     )
     fave_button.parent(fave_and_next_buttons_container);
@@ -84,18 +84,3 @@ function place_song_info()
         '</div>'
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var draw_HTML_overlay = initial_place_buttons;
