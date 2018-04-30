@@ -114,13 +114,12 @@ function liked_transition_draw()
 
 function liked_reveal_draw()
 {
-    // console.log('inside liked_reveal_draw method');
     if (albumart_reveal_opacity == 1)
     {
         place_song_info();
     }
     sketch_instance.tint(255, albumart_reveal_opacity);
-    albumart_reveal_opacity += 1;
+    albumart_reveal_opacity += 2;
     sketch_instance.smooth();
     sketch_instance.image(albumart, vis.zx, vis.zy, vis.w, vis.h);
 }
@@ -176,17 +175,5 @@ function next_track_reset_draw()
     {
         // change the draw_function to the one that reveals the albumart and reviews etc.
         draw_function = unliked_draw;
-        // sound.stop();
-        // sound = sketch_instance.loadSound(
-        //                 song_info.audio, //resource to load
-        //                 function(s) // callback function for success
-        //                 {
-        //                     s.setVolume(1.0);
-        //                     s.play();
-        //                 }, 
-        //                 function(e){alert(e)} // callback function for error
-        //             );
-        // vis = new Visualiser();
-        // vis.last_frame = sketch_instance.get(vis.zx,vis.zy+1,vis.w,vis.h-vis.speed);
     }
 }
