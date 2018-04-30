@@ -64,10 +64,11 @@ function unfave_animation()
     
 }
 
-function next_song_animation(song_info, first_time)
+function next_song_animation(first_time)
 {
 
     // TODO: make the heart red if the next track is in the user's faves!
+
 
     var genre_color_dict = {
         "Pop": "linear-gradient(to bottom, #ED4264, #FFCEBC)",
