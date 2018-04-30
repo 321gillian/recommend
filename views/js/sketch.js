@@ -160,7 +160,7 @@ var s = function(sketch)
         //HTML overlay
 
         //canvas
-        var cnv = sketch_instance.createCanvas($('#player-section').width(), $('#player-section').height());
+        var cnv = sketch_instance.createCanvas(sketch_instance.int($('#player-section').width()), sketch_instance.int($('#player-section').height()));
         sketch_instance.frameRate(30);
         cnv.parent('player-section');
         x_offset = (sketch_instance.width - (sketch_instance.height*scale_const)*1.5)/2;
@@ -169,7 +169,7 @@ var s = function(sketch)
         cy = cnv.position().y;
         vis = new Visualiser();
         vis.last_frame = sketch.get(vis.zx,vis.zy+1,vis.w,vis.h-vis.speed);
-        draw_HTML_overlay();
+        initial_place_buttons();
     }
 
     // called every frame

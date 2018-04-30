@@ -19,6 +19,10 @@
     font-style: italic, oblique;
 } */
 
+.fas {
+    cursor: pointer;
+}
+
 #main-fave-button {
     color: #646464;
     transition: color 0.2s ease;
@@ -261,7 +265,7 @@ canvas {
     transform: translate(-50%, -50%);
 }
 
-#main-side-bar {
+.side-bar {
     height: 100vh;
     min-width: 30vw;
     background-color: #646464e6;
@@ -272,6 +276,9 @@ canvas {
     color: white;
     padding: 30px;
     transition: transform 0.5s ease-in-out;
+}
+
+#main-side-bar {
 }
 
 .revealed-side-bar {
@@ -344,6 +351,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
+    font-size: 2em;
 }
 
 .liked-song:hover i {
@@ -380,4 +388,104 @@ canvas {
 
 .side-menu-nav-button:hover {
     background-color: #515151e6;
+}
+
+
+#profile-side-bar {
+}
+
+.avatar-section {
+    /* width: 50%; */
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    width: 20vh;
+    height: 20vh;
+}
+
+#avatar-preview {
+    width: 20vh;
+    height: 20vh;
+    overflow: hidden;
+}
+
+.avatar-section .avatar-editor {
+    width: 20vh;
+    height: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#avatar-file-input {
+    position: absolute;
+    left: 10000px;
+}
+
+.username-section {
+    margin-top: 30px;
+    /* margin-bottom: 30px; */
+}
+
+.profile-info-field {
+    margin-bottom: 30px;
+    line-height: 1.5rem;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid gray;
+    color: white;
+    text-align: center;
+    border-radius: .25rem;
+    width: 50%;
+    height: 36px;
+}
+
+.profile-info-field:focus, .profile-info-field:active {
+    outline: none;
+    background-color: #515151e6;
+}
+
+.form-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    background-color: #515151e6;
+}
+
+.form-button:hover {
+    background-color: #393939da;
+}
+
+#delete-profile-button {
+    background-color: #ED4264;
+    color: #515151;
+}
+
+#logout-button {
+    margin-top: 45px;
+}
+
+#password-side-bar {
+}
+
+#login-form {
+    margin-top: 50px;
+}
+
+#password-form {
+    margin-top: 50px;
+}
+
+.password-section {
+    margin-top: 30px;
+}
+
+.sign-up-button {
+    margin-top: 0px;
+}
+
+.topspace-p {
+    margin-top: 30px!important;
 }

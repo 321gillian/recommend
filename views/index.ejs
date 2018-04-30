@@ -5,67 +5,294 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mystery Music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
 
-    <script src="./media/main.js"></script>
-    <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/HTML_animations.js"></script>
-    <script src="./js/REST.js"></script>
-	<script src="./js/p5.min.js"></script>
-	<script src="./js/p5.dom.min.js"></script>
-	<script src="./js/p5.sound.min.js"></script>
-    <script src="./js/canvas_HTML_overlay.js"></script>
-    <script src="./js/draw_functions.js"></script>
-    <script src="./js/visualiser.js"></script>
-    <script src="./js/sketch.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/HTML_animations.js"></script>
+    <script src="js/side_bar.js"></script>
+    <script src="js/music.js"></script>
+	<script src="js/p5.min.js"></script>
+	<script src="js/p5.dom.min.js"></script>
+	<script src="js/p5.sound.min.js"></script>
+    <script src="js/canvas_HTML_overlay.js"></script>
+    <script src="js/draw_functions.js"></script>
+    <script src="js/visualiser.js"></script>
+    <script src="js/sketch.js"></script>
 </head>
-  <body>
-      <!--main section starts-->
-      <div id="bg"></div>
-      <div class="container-fluid">
-          <div class="row" id="header-section">
-              <div class="col-1"><img class="img-responsive top-bar-icon" src="img/logo.png" alt="logo" /></div>
-              <div class="col-10"></div>
-              <div class="col-1"><img class="img-responsive top-bar-icon" src="img/user.svg" alt="user" /></div>
-          </div>
-          <div class="row" id="player-section">
-              <!-- p5.js puts the canvas here
-              <i class="fa fa-heart" aria-hidden="true"></i>
-              <i class="fa fa-step-forward" aria-hidden="true"></i> -->
-          </div>
-          <div class="row justify-content-md-center justify-content-lg-center" id="footer-section">
-              <div class="col-4"><p class="text-center footer-text">a mystery music app from the minds of <a class="footer-twitter-link" href="https://twitter.com/maysiogil">@maysiogil</a></p></div>
-          </div>
-      </div>
-      <!--main section ends-->
-    <h1>Mystery Music App</h1>
-    <h2>Login</h2>
-    <label for="username">Username:</label><input id="username" type="text"><br>
-    <label for="password">Password:</label><input id="password" type="text"><br>
-    <button id="submit" type="submit">Login</button>
-    <ul>
-    <% detail.forEach(function(song) { %>
-      <li><%= song.title %></li>
-    </ul>
-      <a href="show/<%= song.id %>"><button type="button">More info</button></a>
-  <% }); %>
- 
- 
-  </body>
-  <!-- Modal section for introduction/welcome modal -->
+<body>
+    <div id="bg"></div>
+    <div class="container-fluid">
+        <div class="row" id="header-section">
+            <div class="col-1"><img class="img-responsive top-bar-icon" src="img/logo.png" alt="logo" /></div>
+            <div class="col-10"></div>
+            <div class="col-1"><img id="user-menu-button-image" class="img-responsive top-bar-icon" src="img/user.svg" alt="user" onclick="toggle_side_menu();" /></div>
+        </div>
+        <div class="row" id="player-section">
+			<!-- p5.js puts the canvas here
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            <i class="fa fa-step-forward" aria-hidden="true"></i> -->
+        </div>
+        <div class="row justify-content-md-center justify-content-lg-center" id="footer-section">
+            <div class="col-4"><p class="text-center footer-text">a mystery music app from the minds of <a class="footer-twitter-link" href="https://twitter.com/maysiogil">@maysiogil</a></p></div>
+        </div>
+    </div>
+
+    <!-- section for account & faves side bar -->
+    <div id="main-side-bar" class="side-bar">
+        <div class="row" id="user-row">
+            <div class="col-1">
+            </div>
+            <div class="col-4">
+                <img class="avatar" src="media/avatars/user.jpg" alt="username">
+                <div class="avatar-editor" onclick="switch_between_main_and_profile();">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+            <div class="col-6">
+                <span class="h4 username">
+                    yuzernaem
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4 id="hearts">HEARTS</h4>
+            </div>
+            <div id="favourites-container" class="col-12">
+                <!-- populate this with ajax call 'get_favourites' function -->
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(1)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 1</h4>
+                        <p>Artist 1 | Album 1 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(1)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(2)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 2</h4>
+                        <p>Artist 2 | Album 2 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(2)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(3)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 3</h4>
+                        <p>Artist 3 | Album 3 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(3)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(3)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 3</h4>
+                        <p>Artist 3 | Album 3 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(3)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(4)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 4</h4>
+                        <p>Artist 4 | Album 4 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(4)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(5)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 5</h4>
+                        <p>Artist 5 | Album 5 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(5)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(6)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 6</h4>
+                        <p>Artist 6 | Album 6 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(6)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(7)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 7</h4>
+                        <p>Artist 7 | Album 7 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(7)"></i>
+                    </div>
+                </div>
+                <div class="row liked-song">
+                    <div class="col-2">
+                        <i class="fas fa-times-circle" onclick="unfavourite(8)"></i>
+                    </div>
+                    <div class="col-8">
+                        <h4>Song 8</h4>
+                        <p>Artist 8 | Album 8 (XXXX)</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-eye" onclick="play_specific_song(8)"></i>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div id="end-of-faves-dash"></div>
+                </div>
+                <div class="col-12">
+                    <p>That's all folks!</p>
+                </div>
+            </div>
+        </div>
+        <div class="side-menu-nav-button" onclick="toggle_side_menu();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
+    <div id="profile-side-bar" class="side-bar">
+        <div class="col-12">
+            <h4 id="edit-profile">Profile Settings</h4>
+        </div>
+        <form class="col-12" id="profile-form">
+            <div class="avatar-section">
+                <img id="avatar-preview" class="avatar" src="media/avatars/user.jpg" alt="username">
+                <div class="avatar-editor" onclick="$('#avatar-file-input').trigger('click');console.log($('#avatar-file-input'));">
+                    <i class="fas fa-pen-square"></i>
+                </div>
+                <input id="avatar-file-input" type="file" name="avatar" onchange="update_avatar_preview(event)">
+            </div>
+            <div class="username-section">
+                <h5>Change username</h5>
+                <input class="profile-info-field" type="text" name="username" id="edit-username" value="yuzernaem">
+            </div>
+            <a role="button" class="btn form-button" onclick="switch_between_profile_and_password();">Change Password</a>
+            <a role="button" class="btn form-button" onclick="save_profile();">Save Changes</a>
+            <a role="button" class="btn form-button" id="logout-button" onclick="logout();">Log out</a>
+            <a role="button" class="btn form-button" id="delete-profile-button" onclick="confirm_delete_profile();">Delete account</a>
+        </form>
+        <div class="side-menu-nav-button" onclick="switch_between_main_and_profile();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-left"></i>
+        </div>
+    </div>
+    <div id="password-side-bar" class="side-bar">
+        <div class="col-12">
+            <h4 id="update-password">Update Password</h4>
+        </div>
+        <form class="col-12" id="password-form">
+            <div class="password-section">
+                <h5>Old Password</h5>
+                <input class="profile-info-field" type="password" name="old_password" id="old_password">
+            </div>
+            <div class="password-section">
+                <h5>New Password</h5>
+                <input class="profile-info-field" type="password" name="new_password" id="new_password">
+            </div>
+            <div class="password-section">
+                <h5>Confirm New Password</h5>
+                <input class="profile-info-field" type="password" name="confirm_new_password" id="confirm_new_password">
+            </div>
+            <a role="button" class="btn form-button" onclick="update_password();">Save Changes</a>
+        </form>
+        <div class="side-menu-nav-button" onclick="switch_between_profile_and_password();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-left"></i>
+        </div>
+    </div>
+    <div id="login-side-bar" class="side-bar">
+        <div class="col-12">
+            <h4 id="update-password">Log In</h4>
+        </div>
+        <form class="col-12" id="login-form">
+            <div class="username-section">
+                <h5>Username</h5>
+                <input class="profile-info-field" type="text" name="username" id="login-username">
+            </div>
+            <div class="password-section">
+                <h5>Password</h5>
+                <input class="profile-info-field" type="password" name="password" id="login-password">
+            </div>
+            <a role="button" class="btn form-button" onclick="login();">Log in</a>
+            <p class="topspace-p">Don't have an account?</p>
+            <a class="btn form-button sign-up-button" onclick="switch_between_login_and_signup();">Sign up</a>
+        </form>
+        <div class="side-menu-nav-button" onclick="toggle_login_menu();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
+    <div id="signup-side-bar" class="side-bar">
+        <div class="col-12">
+            <h4 id="update-password">Sign Up</h4>
+        </div>
+        <form class="col-12" id="signup-form">
+            <div class="username-section">
+                <h5>Email</h5>
+                <input class="profile-info-field" type="text" name="email" id="signup-email">
+            </div>
+            <div class="username-section">
+                <h5>Username</h5>
+                <input class="profile-info-field" type="text" name="username" id="signup-username">
+            </div>
+            <div class="password-section">
+                <h5>Password</h5>
+                <input class="profile-info-field" type="password" name="password" id="signup-password">
+            </div>
+            <div class="password-section">
+                <h5>Confirm Password</h5>
+                <input class="profile-info-field" type="password" name="confirm_password" id="signup-confirm-password">
+            </div>
+            <a role="button" class="btn form-button" onclick="login();">Sign up</a>
+        </form>
+        <div class="side-menu-nav-button" onclick="switch_between_login_and_signup();"> <!-- set onclick for this to close menu -->
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
+    <!-- Modal section for introduction/welcome modal -->
 </body>
-   
 <script>
 $(document).ready(
     function ()
     {
         next(true);
+        // get_favourites();
+        $('.avatar-editor').height($('.avatar-editor').width()+'!important');
     }
 )
 </script>
