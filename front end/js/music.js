@@ -17,8 +17,8 @@ function next(first_time)
             dataType: 'json',
             success: function(data)
             {
-                var song = data.song_info;
-                next_song_animation(song, first_time);
+                song_info = data.song_info;
+                next_song_animation(first_time);
             },
             error: function(e) {
                 //do something about the error
