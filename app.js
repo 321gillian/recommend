@@ -48,6 +48,31 @@ app.get('/' , function(req, res){
   
 })
 
+//random number generator function
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+var songs = require("./model/songs.json"); // allow the app to access the products.json file
+var user = require('./model/user');
+
+
+app.get('/old-index' , function(req, res){
+var currentNumber = randomNumber(1, 12);
+//function to get random songfunction - GM
+function findSong(which) {
+return which.id === currentNumber;
+}
+//filter the songs and declare the new song as a separate variable - GM
+detail = songs.filter(findSong);
+
+res.render("old-index.ejs", 
+           {detail:detail}
+          ); 
+console.log("Index page is up!");
+
+})
+
 
 //route to render the songselector page
 app.get('/songselector', function(req, res) {
@@ -143,6 +168,15 @@ app.get('/signup', function(req, res) {
   res.render("signup.ejs"); 
 });
 
+
+//route to render the more detail page - GM
+app.get('/show/:id', function(req, res){
+  res.render("show.ejs",  
+             {detail:detail}
+            );
+  console.log("Show is go!")
+  console.log(detail);
+})
 
 
 // CREATES A NEW USER
