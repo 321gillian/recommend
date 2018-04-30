@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // tells the system to convert the url coded objects into a string
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "jade");
+app.set('view engine', 'ejs');
 
 
 //this is the session handler middleware
@@ -28,15 +28,6 @@ app.use(session({
   activeDuration: 5 * 60 * 1000,
 }));
 
-//this indicates that the tmeplate engiene is in jade.
-//app.set("view engine", " jade");
-app.set('view engine', 'ejs');
-
-
-// this tells the app thats the static pages are view and routes
-app.use(express.static("views"));
-app.use(express.static("routes"));
-
 //our mongoose model schema for our application data
 var mongoose = require ('mongoose');
 mongoose.connect('mongodb://mysterymusicapp:mysterymusicapp@ds249079.mlab.com:49079/mysterymusicapp')
@@ -46,21 +37,12 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-var songs = require("./model/songs.json"); // allow the app to access the products.json file
+
 var user = require('./model/user');
 
 
 app.get('/' , function(req, res){
-  var currentNumber = randomNumber(1, 12);
-  //function to get random songfunction - GM
-function findSong(which) {
-  return which.id === currentNumber;
-}
- //filter the songs and declare the new song as a separate variable - GM
-  detail = songs.filter(findSong);
-
-  res.render("index.ejs", 
-             {detail:detail}
+  res.render("index.ejs"
             ); 
   console.log("Index page is up!");
   
@@ -161,14 +143,6 @@ app.get('/signup', function(req, res) {
   res.render("signup.ejs"); 
 });
 
-//route to render the more detail page - GM
-app.get('/show/:id', function(req, res){
-  res.render("show.ejs",  
-             {detail:detail}
-            );
-  console.log("Show is go!")
-  console.log(detail);
-})
 
 
 // CREATES A NEW USER
