@@ -1,6 +1,8 @@
 'use strict';
 function next(first_time) 
 {
+    // the next three lines are for demo purposes only
+    // remove them when ajax is set up
     var first_time = first_time;
     var choices = ['janelle', 'thundercat', 'bowie', 'parton', 'haim', 'grace'];
     var choice = choices[Math.floor(Math.random()*choices.length)];
@@ -8,14 +10,15 @@ function next(first_time)
         {
             // url: "/next",
             // type: 'GET',
-            // dataType: 'json',
+            // dataType: 'json',     // uncomment this section when connecting front end to back end
             // success: function(data)
             url: "/json_dummy/"+choice+".json",
-            type: 'GET',
+            type: 'GET',             // delete these three when connecting front end to back end
             dataType: 'json',
             success: function(data)
             {
-                next_song_animation(data, first_time);
+                var song = data.song_info;
+                next_song_animation(song, first_time);
             },
             error: function(e) {
                 //do something about the error

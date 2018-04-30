@@ -64,13 +64,11 @@ function unfave_animation()
     
 }
 
-function next_song_animation(data, first_time)
+function next_song_animation(song_info, first_time)
 {
-    //process result
-    // console.log(result);
-    // var data = JSON.parse(result);
-    song_info = data.song_info;
-    
+
+    // TODO: make the heart red if the next track is in the user's faves!
+
     var genre_color_dict = {
         "Pop": "linear-gradient(to bottom, #ED4264, #FFCEBC)",
         "Funk": "linear-gradient(to bottom, #45A247, #283C86)",
@@ -80,7 +78,6 @@ function next_song_animation(data, first_time)
         "Alternative": "linear-gradient(to bottom, #005AA7, #FFFDE4)"
     }
 
-    // $('#bg').css('opacity', '0');
     $('#bg').addClass(song_info.genre);
     
     setTimeout(function () {
@@ -115,7 +112,7 @@ function next_song_animation(data, first_time)
             vis.fft.dispose();
             vis = new Visualiser();
             albumart = sketch_instance.loadImage(song_info.cover);
-            sketch_vis_colors(sketch_instance);
+            sketch_vis_colors();
             sketch_instance.fill(240);
             sketch_instance.rect(vis.zx, vis.zy, vis.w, vis.h);
             sketch_instance.fill(vc1);
@@ -134,30 +131,17 @@ function next_song_animation(data, first_time)
         }
         else {
             vis.song_file.stopAll();
-            // vis.song_file.remove();
             vis.song_file.dispose();
-            // vis.fft.remove();
             vis.fft.dispose();
             albumart = sketch_instance.loadImage(song_info.cover);
-            // vis = null;
             vis = new Visualiser();
-            // vis.song_file = sketch_instance.loadSound(
-            //     song_info.audio, //resource to load
-            //     function(s) // callback function for success
-            //     {
-            //         s.setVolume(1.0);
-            //         s.play();
-            //     }, 
-            //     function(e){alert(e)} // callback function for error
-            // );
             liked = false;
-            sketch_vis_colors(sketch_instance);
+            sketch_vis_colors();
             sketch_instance.fill(240);
             sketch_instance.rect(vis.zx, vis.zy, vis.w, vis.h);
             sketch_instance.fill(vc1);
             sketch_instance.rect(vis.zx, vis.zy, vis.w, vis.h);
             vis.last_frame = sketch_instance.get(vis.zx,vis.zy+1,vis.w,vis.h-vis.speed);
-            // vis.fft.setInput(vis.song_file);
         }
         
     }
